@@ -1246,17 +1246,6 @@ button {
   animation: slideDown 0.3s ease;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .event-expanded-inner h4 {
   font: 600 18px Georgia, serif;
   color: var(--primary);
@@ -1543,45 +1532,83 @@ button {
 }
 
 /* ========================================
-   TRAININGS PAGE
+   TRAININGS PAGE - VERTICAL CARDS WITH DROPDOWN
    ======================================== */
 .training-hero {
-  background: linear-gradient(90deg, #092b58ee, #092b5877),
-    url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1800&q=80') center/cover;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
 }
 
-.training-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.training-grid-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 45px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.training-card {
+.training-card-vertical {
   background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 1px solid var(--border);
 }
 
-.training-image {
-  height: 220px;
+.training-card-vertical:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.training-card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+}
+
+.training-card-image {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
   background-size: cover;
   background-position: center;
 }
 
-.training-body {
-  padding: 25px;
+.training-card-info {
+  flex: 1;
+  min-width: 0;
 }
 
-.training-body .eyebrow {
+.training-card-info .eyebrow {
   font-size: 10px;
+}
+
+.training-card-info h3 {
+  font: 400 20px Georgia, serif;
+  color: var(--primary);
+  margin: 4px 0 6px;
+  line-height: 1.3;
+}
+
+.training-card-info > p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 8px;
+  line-height: 1.5;
 }
 
 .training-meta {
   display: flex;
   gap: 16px;
-  border-top: 1px solid var(--border);
-  padding: 15px 0;
-  margin: 20px 0;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 
@@ -1592,12 +1619,146 @@ button {
 }
 
 .training-meta svg {
-  width: 14px;
   color: var(--gold);
 }
 
+.training-expand-icon {
+  flex-shrink: 0;
+  color: var(--gold);
+  padding: 0 8px;
+}
+
+/* Expanded Content - DROPS DOWN VERTICALLY */
+.training-expanded-content {
+  padding: 0 20px 24px 20px;
+  border-top: 1px solid var(--border);
+  animation: slideDown 0.3s ease;
+}
+
+.training-expanded-inner {
+  padding-top: 16px;
+}
+
+.training-expanded-inner h4 {
+  font: 600 18px Georgia, serif;
+  color: var(--primary);
+  margin: 0 0 10px;
+}
+
+.training-expanded-inner h5 {
+  font: 600 15px Georgia, serif;
+  color: var(--primary);
+  margin: 16px 0 10px;
+}
+
+.training-expanded-inner p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.training-expanded-inner ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0 16px;
+}
+
+.training-expanded-inner ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 12px;
+  background: var(--cream);
+  border-radius: 6px;
+}
+
+.training-expanded-inner ul li svg {
+  color: var(--gold);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.training-testimonial {
+  background: var(--cream);
+  padding: 14px 18px;
+  border-radius: 8px;
+  border-left: 4px solid var(--gold);
+  margin: 12px 0;
+}
+
+.training-testimonial p {
+  font-style: italic;
+  color: var(--primary);
+  margin: 0;
+  font-size: 14px;
+}
+
+.training-source {
+  font-style: normal;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px !important;
+}
+
+.training-highlight {
+  background: rgba(212, 175, 55, 0.1);
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.training-highlight p {
+  color: var(--primary);
+  margin: 0;
+  font-size: 14px;
+}
+
+.training-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  margin: 12px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.training-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.training-date svg {
+  color: var(--gold);
+}
+
+.training-partner {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.training-cta {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.training-cta .button {
+  min-width: 200px;
+}
+
 /* ========================================
-   CEO SECTION
+   CEO SECTION - FIXED
    ======================================== */
 .ceo-section {
   padding: 80px 0;
@@ -1617,16 +1778,20 @@ button {
 
 .ceo-grid {
   display: flex;
+  flex-direction: row;
   gap: 60px;
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* Left Column - Content (70-75%) */
 .ceo-content {
   flex: 0 0 70%;
   max-width: 70%;
+  display: flex;
+  flex-direction: column;
 }
 
 .ceo-label {
@@ -1639,14 +1804,15 @@ button {
   background: rgba(212, 175, 55, 0.1);
   padding: 4px 12px;
   border-radius: 4px;
-  margin-bottom: 12px;
+  margin: 8px 0 12px;
+  width: fit-content;
 }
 
 .ceo-name {
   font-size: 2.5rem;
   font-weight: 700;
   color: #1a2a4a;
-  margin: 8px 0 4px 0;
+  margin: 0 0 4px 0;
   line-height: 1.2;
 }
 
@@ -1863,8 +2029,7 @@ button {
     gap: 28px;
   }
 
-  .initiative-grid,
-  .training-grid {
+  .initiative-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
     margin: 0 auto;
@@ -1938,6 +2103,51 @@ button {
     height: auto;
   }
 
+  /* CEO Responsive */
+  .ceo-section {
+    padding: 50px 0;
+  }
+
+  .ceo-grid {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    gap: 30px;
+  }
+
+  .ceo-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .ceo-portrait {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .portrait-frame {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .ceo-name {
+    font-size: 2rem;
+  }
+
+  .ceo-key-areas {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .key-area {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+
+  .ceo-quote p {
+    font-size: 1rem;
+  }
+
   /* Events Responsive */
   .past-events-grid {
     grid-template-columns: 1fr;
@@ -1967,6 +2177,39 @@ button {
 
   .event-item-info strong small {
     font-size: 10px;
+  }
+
+  /* Training Responsive */
+  .training-card-header {
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .training-card-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .training-card-info h3 {
+    font-size: 17px;
+  }
+
+  .training-expanded-inner ul {
+    grid-template-columns: 1fr;
+  }
+
+  .training-expanded-content {
+    padding: 0 16px 20px 16px;
+  }
+
+  .training-cta .button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .training-grid-vertical {
+    max-width: 100%;
+    margin-top: 30px;
   }
 }
 
@@ -2011,6 +2254,28 @@ button {
     padding: 22px;
   }
 
+  /* CEO Mobile */
+  .ceo-name {
+    font-size: 1.6rem;
+  }
+
+  .ceo-title {
+    font-size: 0.9rem;
+  }
+
+  .ceo-description {
+    font-size: 0.95rem;
+  }
+
+  .key-area {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+
+  .portrait-frame {
+    max-width: 200px;
+  }
+
   /* Events Mobile */
   .event-item-main {
     padding: 12px 16px;
@@ -2047,46 +2312,29 @@ button {
     font-size: 28px;
   }
 
-  /* CEO Section Mobile */
-  .ceo-section {
-    padding: 50px 0;
+  /* Training Mobile */
+  .training-card-header {
+    gap: 12px;
   }
 
-  .ceo-grid {
-    flex-direction: column-reverse;
-    gap: 30px;
-    align-items: center;
+  .training-card-image {
+    width: 60px;
+    height: 60px;
   }
 
-  .ceo-content {
-    flex: 0 0 100%;
-    max-width: 100%;
+  .training-card-info h3 {
+    font-size: 15px;
   }
 
-  .ceo-portrait {
-    flex: 0 0 100%;
-    max-width: 100%;
+  .training-meta {
+    font-size: 11px;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
-  .portrait-frame {
-    max-width: 240px;
-  }
-
-  .ceo-name {
-    font-size: 2rem;
-  }
-
-  .ceo-key-areas {
-    gap: 8px;
-  }
-
-  .key-area {
-    font-size: 0.8rem;
-    padding: 6px 14px;
-  }
-
-  .ceo-quote p {
-    font-size: 1rem;
+  .training-expand-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .card-image {
@@ -2101,23 +2349,23 @@ button {
 /* Mobile Extra Small */
 @media (max-width: 480px) {
   .ceo-name {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .ceo-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .ceo-description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .key-area {
-    font-size: 0.75rem;
-    padding: 5px 12px;
+    font-size: 0.7rem;
+    padding: 4px 10px;
   }
 
   .portrait-frame {
-    max-width: 200px;
+    max-width: 180px;
   }
 }
