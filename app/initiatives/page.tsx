@@ -67,7 +67,7 @@ export default function InitiativesPage() {
     <>
       <Header />
       <main>
-        {/* Hero 1 - WITH BACKGROUND IMAGE - FIXED ZOOM */}
+        {/* Hero 1 - WITH BACKGROUND IMAGE */}
         <section 
           className="initiatives-hero"
           style={{
@@ -265,32 +265,41 @@ export default function InitiativesPage() {
               </div>
             </div>
 
-            {/* Testimonials Section - LIKE HOME PAGE DESIGN */}
+            {/* Testimonials Section - INCREASED IMAGE HEIGHT */}
             <section className="quote-section" style={{ 
               background: 'var(--primary)', 
               color: 'var(--white)', 
-              padding: '90px 0',
+              padding: '100px 0',
               margin: '40px 0',
-              borderRadius: '12px'
+              width: '100vw',
+              marginLeft: 'calc(-50vw + 50%)',
+              marginRight: 'calc(-50vw + 50%)',
+              paddingLeft: 'calc(50vw - 50%)',
+              paddingRight: 'calc(50vw - 50%)'
             }}>
               <div className="container quote-grid" style={{ 
                 display: 'grid', 
                 gridTemplateColumns: '1fr 1fr', 
                 gap: '70px', 
-                alignItems: 'center' 
+                alignItems: 'center',
+                maxWidth: '1160px',
+                margin: '0 auto',
+                width: 'min(1160px, calc(100% - 40px))'
               }}>
-                {/* Left Column - Image Slideshow */}
+                {/* Left Column - Image Slideshow - INCREASED HEIGHT */}
                 <div className="quote-slideshow" style={{ 
                   position: 'relative', 
                   width: '100%', 
                   borderRadius: '12px', 
                   overflow: 'hidden', 
-                  background: 'rgba(255,255,255,0.05)' 
+                  background: 'rgba(255,255,255,0.05)',
+                  minHeight: '450px',
+                  aspectRatio: '4/3'
                 }}>
                   <div className="slideshow-container" style={{ 
                     position: 'relative', 
                     width: '100%', 
-                    paddingBottom: '75%', 
+                    height: '100%', 
                     overflow: 'hidden' 
                   }}>
                     <div className="slideshow-track" style={{ 
@@ -318,8 +327,7 @@ export default function InitiativesPage() {
                           <Image 
                             src={`/initiative${index + 3}.jpg`}
                             alt={`Testimonial image ${index + 1}`}
-                            width={500}
-                            height={400}
+                            fill
                             className="slideshow-image"
                             style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}
                           />
@@ -552,7 +560,7 @@ export default function InitiativesPage() {
               </div>
             </section>
 
-            {/* Journey Timeline Section - FIXED ALIGNMENT */}
+            {/* Journey Timeline Section */}
             <section className="journey-section" style={{ 
               padding: '60px 0', 
               background: 'var(--cream)', 
@@ -665,7 +673,7 @@ export default function InitiativesPage() {
               </div>
             </section>
 
-            {/* Impact Stories Section - FIXED IMAGE ZOOM */}
+            {/* Impact Stories Section - INCREASED WIDTH LIKE EVENTS PAGE */}
             <section className="impact-stories-section" style={{ padding: '60px 0' }}>
               <SectionHeading 
                 eyebrow="Impact Stories" 
@@ -686,16 +694,29 @@ export default function InitiativesPage() {
                   borderRadius: '12px', 
                   overflow: 'hidden', 
                   boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}>
-                  <div className="impact-story-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <div className="impact-story-image" style={{ 
+                    position: 'relative', 
+                    width: '100%',
+                    aspectRatio: '4/3',
+                    minHeight: '360px',
+                    overflow: 'hidden',
+                    background: '#e8e5de'
+                  }}>
                     <Image 
-                      src="/initiative8.jpg"
+                      src="/initiative8.png"
                       alt="Victor Saliu"
-                      width={400}
-                      height={300}
+                      fill
                       className="impact-story-img"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        objectPosition: 'center top'
+                      }}
                     />
                     <span className="impact-badge gold" style={{ 
                       position: 'absolute', 
@@ -707,10 +728,11 @@ export default function InitiativesPage() {
                       fontWeight: 700, 
                       textTransform: 'uppercase',
                       background: '#ffd700',
-                      color: '#1a2a4a'
+                      color: '#1a2a4a',
+                      zIndex: 2
                     }}>🥇 1st Place</span>
                   </div>
-                  <div className="impact-story-content" style={{ padding: '24px' }}>
+                  <div className="impact-story-content" style={{ padding: '24px', flex: 1 }}>
                     <blockquote style={{ 
                       fontStyle: 'italic', 
                       fontSize: '15px', 
@@ -744,16 +766,29 @@ export default function InitiativesPage() {
                   borderRadius: '12px', 
                   overflow: 'hidden', 
                   boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}>
-                  <div className="impact-story-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <div className="impact-story-image" style={{ 
+                    position: 'relative', 
+                    width: '100%',
+                    aspectRatio: '4/3',
+                    minHeight: '360px',
+                    overflow: 'hidden',
+                    background: '#e8e5de'
+                  }}>
                     <Image 
-                      src="/initiative9.jpg"
+                      src="/initiative9.png"
                       alt="Okeagbo Mary Omolola"
-                      width={400}
-                      height={300}
+                      fill
                       className="impact-story-img"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        objectPosition: 'center top'
+                      }}
                     />
                     <span className="impact-badge silver" style={{ 
                       position: 'absolute', 
@@ -765,10 +800,11 @@ export default function InitiativesPage() {
                       fontWeight: 700, 
                       textTransform: 'uppercase',
                       background: '#c0c0c0',
-                      color: '#1a2a4a'
+                      color: '#1a2a4a',
+                      zIndex: 2
                     }}>🥈 2nd Place</span>
                   </div>
-                  <div className="impact-story-content" style={{ padding: '24px' }}>
+                  <div className="impact-story-content" style={{ padding: '24px', flex: 1 }}>
                     <blockquote style={{ 
                       fontStyle: 'italic', 
                       fontSize: '15px', 
@@ -802,16 +838,29 @@ export default function InitiativesPage() {
                   borderRadius: '12px', 
                   overflow: 'hidden', 
                   boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}>
-                  <div className="impact-story-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <div className="impact-story-image" style={{ 
+                    position: 'relative', 
+                    width: '100%',
+                    aspectRatio: '4/3',
+                    minHeight: '360px',
+                    overflow: 'hidden',
+                    background: '#e8e5de'
+                  }}>
                     <Image 
-                      src="/initiative10.jpg"
+                      src="/initiative10.png"
                       alt="Uba Paul-Silas"
-                      width={400}
-                      height={300}
+                      fill
                       className="impact-story-img"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        objectPosition: 'center top'
+                      }}
                     />
                     <span className="impact-badge bronze" style={{ 
                       position: 'absolute', 
@@ -823,10 +872,11 @@ export default function InitiativesPage() {
                       fontWeight: 700, 
                       textTransform: 'uppercase',
                       background: '#cd7f32',
-                      color: 'var(--white)'
+                      color: 'var(--white)',
+                      zIndex: 2
                     }}>🥉 3rd Place</span>
                   </div>
-                  <div className="impact-story-content" style={{ padding: '24px' }}>
+                  <div className="impact-story-content" style={{ padding: '24px', flex: 1 }}>
                     <blockquote style={{ 
                       fontStyle: 'italic', 
                       fontSize: '15px', 
@@ -854,22 +904,35 @@ export default function InitiativesPage() {
                   </div>
                 </div>
 
-                {/* Winners 2024 - Extra */}
+                {/* Winners 2024 */}
                 <div className="impact-story winners-2024" style={{ 
                   background: 'var(--white)', 
                   borderRadius: '12px', 
                   overflow: 'hidden', 
                   boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}>
-                  <div className="impact-story-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <div className="impact-story-image" style={{ 
+                    position: 'relative', 
+                    width: '100%',
+                    aspectRatio: '4/3',
+                    minHeight: '360px',
+                    overflow: 'hidden',
+                    background: '#e8e5de'
+                  }}>
                     <Image 
-                      src="/initiative11.jpg"
+                      src="/initiative11.png"
                       alt="Winners 2024"
-                      width={400}
-                      height={300}
+                      fill
                       className="impact-story-img"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        objectPosition: 'center top'
+                      }}
                     />
                     <span className="impact-badge year" style={{ 
                       position: 'absolute', 
@@ -881,10 +944,11 @@ export default function InitiativesPage() {
                       fontWeight: 700, 
                       textTransform: 'uppercase',
                       background: 'var(--primary)',
-                      color: 'var(--white)'
+                      color: 'var(--white)',
+                      zIndex: 2
                     }}>2024</span>
                   </div>
-                  <div className="impact-story-content" style={{ padding: '24px' }}>
+                  <div className="impact-story-content" style={{ padding: '24px', flex: 1 }}>
                     <h4 style={{ font: '400 20px Georgia, serif', color: 'var(--primary)', margin: '0 0 4px' }}>Winners 2024</h4>
                     <p className="impact-detail" style={{ fontSize: '13px', color: 'var(--muted)', margin: '0 0 4px' }}>
                       Get involved in community service events that support our mission and values.
