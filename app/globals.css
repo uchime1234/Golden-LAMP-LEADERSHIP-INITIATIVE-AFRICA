@@ -975,53 +975,531 @@ button {
 }
 
 /* ========================================
-   INITIATIVES PAGE
+   INITIATIVES PAGE - CUSTOM STYLES
    ======================================== */
-.large-grid {
-  margin-top: 45px;
-}
 
-.large-grid .card-image {
-  height: 290px;
-}
-
-.feature-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+/* Hero 1, 2 & 3 */
+.initiatives-hero,
+.initiatives-hero-2,
+.initiatives-hero-3 {
+  background-size: cover;
+  background-position: center;
+  min-height: 450px;
+  display: flex;
   align-items: center;
-  margin-top: 100px;
-  padding: 70px 0;
-  border-top: 1px solid var(--border);
 }
 
-.feature-row h2 {
-  font: 400 44px / 1.1 Georgia, serif;
+.initiatives-hero-2 {
+  min-height: 300px;
 }
 
-.feature-row p {
-  color: var(--muted);
-  max-width: 480px;
+.initiatives-hero-3 {
+  min-height: 350px;
+  margin: 60px 0;
+  border-radius: 12px;
 }
 
-.feature-row ul {
-  list-style: none;
+.hero-subtitle {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--white);
   margin: 0;
-  padding: 0;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: #e2e9f2;
+  max-width: 600px;
+  margin-top: 16px;
+}
+
+.hero-description-large {
+  font-size: clamp(20px, 2.5vw, 30px);
+  color: var(--white);
+  max-width: 800px;
+  line-height: 1.6;
+  font-family: Georgia, serif;
+}
+
+/* Goals Section */
+.goals-section {
+  padding: 40px 0 60px;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.goal-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid var(--gold);
+}
+
+.goal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.goal-icon {
+  background: rgba(212, 175, 55, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.goal-card h3 {
+  font: 400 20px Georgia, serif;
+  color: var(--primary);
+  margin: 0 0 10px;
+}
+
+.goal-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 60px 0;
+  background: var(--cream);
+  border-radius: 12px;
+  margin: 40px 0;
+}
+
+.testimonials-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonials-slideshow {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-slide-track {
+  position: relative;
+  min-height: 320px;
+}
+
+.testimonial-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  pointer-events: none;
+}
+
+.testimonial-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.testimonial-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.testimonial-content {
+  flex: 1;
+}
+
+.testimonial-quote-icon {
+  color: var(--gold);
+  width: 36px;
+  height: 36px;
+  margin-bottom: 12px;
+}
+
+.testimonial-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--primary);
+  font-style: italic;
+  margin: 0 0 16px;
+}
+
+.testimonial-author {
   display: flex;
   flex-direction: column;
-  gap: 18px;
 }
 
-.feature-row li {
+.author-name {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 16px;
+}
+
+.author-role {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.testimonial-image-wrapper {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+}
+
+.testimonial-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Testimonial Controls */
+.testimonial-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--white);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
-  gap: 12px;
   align-items: center;
-  font-size: 15px;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+  z-index: 10;
 }
 
-.feature-row li svg {
+.testimonial-btn:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.testimonial-btn.prev-btn {
+  left: -20px;
+}
+
+.testimonial-btn.next-btn {
+  right: -20px;
+}
+
+/* Testimonial Dots */
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.testimonial-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d7d6d0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.testimonial-dots .dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+/* Vision, Mission, Goals Section */
+.vision-mission-section {
+  padding: 60px 0;
+}
+
+.vision-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.vm-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.vm-card:hover {
+  transform: translateY(-4px);
+}
+
+.vm-card.vision {
+  border-top: 4px solid #ffd700;
+}
+
+.vm-card.mission {
+  border-top: 4px solid #1a2a4a;
+}
+
+.vm-card.goals {
+  border-top: 4px solid #d4af37;
+}
+
+.vm-icon {
   color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.vm-card h3 {
+  font: 400 22px Georgia, serif;
+  color: var(--primary);
+  margin: 0 0 10px;
+}
+
+.vm-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.vm-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vm-card ul li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.vm-card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Journey Timeline Section */
+.journey-section {
+  padding: 60px 0;
+  background: var(--cream);
+  border-radius: 12px;
+  margin: 40px 0;
+}
+
+.journey-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+  position: relative;
+}
+
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.3;
+}
+
+.journey-step {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.journey-step:hover {
+  transform: translateY(-4px);
+}
+
+.journey-number {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.journey-icon {
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.journey-step h4 {
+  font: 400 18px Georgia, serif;
+  color: var(--primary);
+  margin: 0 0 8px;
+}
+
+.journey-step p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.journey-arrow {
+  color: var(--gold);
+  font-size: 24px;
+  margin-top: 12px;
+  opacity: 0.5;
+}
+
+/* Impact Stories Section */
+.impact-stories-section {
+  padding: 60px 0;
+}
+
+.impact-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.impact-story {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-story:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.impact-story-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.impact-story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.impact-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.impact-badge.gold {
+  background: #ffd700;
+  color: #1a2a4a;
+}
+
+.impact-badge.silver {
+  background: #c0c0c0;
+  color: #1a2a4a;
+}
+
+.impact-badge.bronze {
+  background: #cd7f32;
+  color: var(--white);
+}
+
+.impact-badge.year {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.impact-story-content {
+  padding: 24px;
+}
+
+.impact-story-content blockquote {
+  font-style: italic;
+  font-size: 15px;
+  color: var(--primary);
+  line-height: 1.7;
+  margin: 0 0 12px;
+  padding-left: 16px;
+  border-left: 3px solid var(--gold);
+}
+
+.impact-story-content h4 {
+  font: 400 20px Georgia, serif;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+
+.impact-detail {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 4px;
+}
+
+.impact-school {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.impact-prize {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 12px;
+  border-radius: 12px;
+}
+
+.winners-2024-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.winners-2024-list span {
+  font-size: 13px;
+  color: var(--primary);
 }
 
 /* ========================================
@@ -2103,6 +2581,68 @@ button {
     height: auto;
   }
 
+  /* Initiatives Page Responsive */
+  .goals-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+
+  .vision-mission-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+
+  .journey-timeline {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 40px auto 0;
+  }
+
+  .journey-timeline::before {
+    display: none;
+  }
+
+  .journey-arrow {
+    transform: rotate(90deg);
+  }
+
+  .impact-stories-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+
+  .testimonial-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .testimonial-image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .testimonial-btn.prev-btn {
+    left: -10px;
+  }
+
+  .testimonial-btn.next-btn {
+    right: -10px;
+  }
+
+  .initiatives-hero,
+  .initiatives-hero-2,
+  .initiatives-hero-3 {
+    min-height: 320px;
+  }
+
+  .hero-description-large {
+    font-size: 18px;
+  }
+
   /* CEO Responsive */
   .ceo-section {
     padding: 50px 0;
@@ -2254,6 +2794,45 @@ button {
     padding: 22px;
   }
 
+  /* Initiatives Mobile */
+  .testimonial-card {
+    padding: 16px;
+  }
+
+  .testimonial-text {
+    font-size: 15px;
+  }
+
+  .testimonial-image-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .testimonial-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .testimonial-btn.prev-btn {
+    left: -5px;
+  }
+
+  .testimonial-btn.next-btn {
+    right: -5px;
+  }
+
+  .impact-story-image {
+    height: 160px;
+  }
+
+  .goal-card {
+    padding: 24px;
+  }
+
+  .vm-card {
+    padding: 24px;
+  }
+
   /* CEO Mobile */
   .ceo-name {
     font-size: 1.6rem;
@@ -2367,5 +2946,152 @@ button {
 
   .portrait-frame {
     max-width: 180px;
+  }
+}
+
+/* ========================================
+   INITIATIVES PAGE - ADDITIONAL FIXES
+   ======================================== */
+
+/* Ensure containers work properly */
+.page-content .container {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Goal cards hover effect */
+.goal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* VM cards hover effect */
+.vm-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Journey step hover effect */
+.journey-step:hover {
+  transform: translateY(-4px);
+}
+
+/* Impact story hover effect */
+.impact-story:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonial button hover */
+.testimonial-btn:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+/* Responsive fixes for initiatives page */
+@media (max-width: 900px) {
+  .goals-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+
+  .vision-mission-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+
+  .journey-timeline {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
+    margin: 40px auto 0;
+  }
+
+  .impact-stories-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 500px;
+    margin: 40px auto 0;
+  }
+
+  .testimonial-card {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 24px !important;
+  }
+
+  .testimonial-image-wrapper {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .testimonial-btn.prev-btn {
+    left: -10px !important;
+  }
+
+  .testimonial-btn.next-btn {
+    right: -10px !important;
+  }
+
+  .initiatives-hero,
+  .initiatives-hero-2,
+  .initiatives-hero-3 {
+    min-height: 320px !important;
+    padding: 60px 0 !important;
+  }
+
+  .hero-description-large {
+    font-size: 18px !important;
+  }
+
+  .journey-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 520px) {
+  .testimonial-card {
+    padding: 16px !important;
+  }
+
+  .testimonial-text {
+    font-size: 15px !important;
+  }
+
+  .testimonial-image-wrapper {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .testimonial-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .testimonial-btn.prev-btn {
+    left: -5px !important;
+  }
+
+  .testimonial-btn.next-btn {
+    right: -5px !important;
+  }
+
+  .impact-story-image {
+    height: 160px !important;
+  }
+
+  .goal-card {
+    padding: 24px !important;
+  }
+
+  .vm-card {
+    padding: 24px !important;
+  }
+
+  .journey-step {
+    padding: 16px !important;
+  }
+
+  .journey-step h4 {
+    font-size: 16px !important;
   }
 }
