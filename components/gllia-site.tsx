@@ -220,7 +220,7 @@ export function SectionHeading({
 
 // ========== CALL TO ACTION ==========
 export function CTA({
-  title = 'Help shape Africa\'s health future.',
+  title = 'Help shape Africa\'s future health.',
   copy = 'Join a community of bold thinkers, dedicated mentors, and changemakers building a healthier continent.',
   button = 'Get involved'
 }: {

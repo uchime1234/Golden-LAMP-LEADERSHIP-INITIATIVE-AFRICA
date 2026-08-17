@@ -51,7 +51,7 @@ export default function EventsPage() {
                 }}
               />
               <div className="event-feature-content">
-                <span className="event-date">30 October 2026</span>
+                <span className="event-date">31 October 2026</span>
                 <h2>2026 Undergraduate Nursing Research Challenge</h2>
                 <p>
                   The 2026 Undergraduate Nursing Research Challenge is a national research competition 
@@ -162,7 +162,7 @@ export default function EventsPage() {
                         </p>
 
                         <div className="event-cta">
-                          <span className="event-badge">30 October 2026</span>
+                          <span className="event-badge">31 October 2026</span>
                           <p className="event-closing">
                             Come and celebrate the next generation of nursing researchers and leaders as they 
                             transform research into ideas, evidence, and impact.
@@ -305,25 +305,6 @@ export default function EventsPage() {
                     <div className="past-event-stats">
                       <span><strong>138</strong> Students</span>
                       <span><strong>8</strong> Weeks</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* International Research Conference - event9 */}
-                <div className="past-event-card">
-                  <div className="past-event-image">
-                    <img src="/events9.jpg" alt="International Research Conference" />
-                  </div>
-                  <div className="past-event-content">
-                    <span className="past-event-year">2025</span>
-                    <h3>International Research Conference</h3>
-                    <p className="past-event-location"><MapPin size={16} /> Senegal</p>
-                    <p className="past-event-description">
-                      GLLIA sponsored a faculty member to attend an international research conference in 
-                      Senegal, supporting academic growth and international collaboration.
-                    </p>
-                    <div className="past-event-tag">
-                      <span>International Collaboration</span>
                     </div>
                   </div>
                 </div>
