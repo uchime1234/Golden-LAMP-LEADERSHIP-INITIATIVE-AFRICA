@@ -44,44 +44,28 @@ export default function AboutPage() {
       email: "info@goldenlampleadershipinitiativeafrica.org"
     },
     {
-      name: "Dr. Omobola Oluwaseyi",
-      position: "Mentor & Advisor",
-      image: "/about2.png",
-      expertise: ["Nursing Education", "Clinical Practice", "Leadership"],
-      background: "Dr. Omobola Oluwaseyi brings years of experience in nursing education and clinical practice, mentoring the next generation of nursing leaders.",
+      name: "Mr Cornelius Arinze",
+      position: "team member",
+      image: "/offer.png",
+      expertise: ["Admin"],
+      background: "",
       website: "#",
       email: "info@goldenlampleadershipinitiativeafrica.org"
     },
     {
-      name: "Gaknung Bonji K.",
-      position: "Research Director",
-      image: "/about3.png",
-      expertise: ["Research", "Nursing Leadership", "Public Health"],
-      background: "Gaknung Bonji K. is a dedicated researcher focused on innovative healthcare solutions and strengthening research capacity across Africa.",
+      name: "mrs suzette Solomon.",
+      position: "team member",
+      image: "/offer.png",
+      expertise: ["Admin"],
+      background: "",
       website: "#",
       email: "info@goldenlampleadershipinitiativeafrica.org"
     },
-    {
-      name: "Dr. Mercy Aladegboye",
-      position: "Mentor & Facilitator",
-      image: "/about4.png",
-      expertise: ["Nursing Education", "Evidence-Based Practice", "Research"],
-      background: "Dr. Mercy Aladegboye is a seasoned nursing educator committed to advancing evidence-based practice and nursing research.",
-      website: "#",
-      email: "info@goldenlampleadershipinitiativeafrica.org"
-    }
+   
   ]
 
   // Mentors Data
   const mentors = [
-    {
-      name: "Oluyemisi Otitoloju",
-      role: "Founder / Leadership & Research",
-      qualification: "MSc. Public Health",
-      image: "/about5.png",
-      expertise: ["Nursing Leadership", "Research", "Mentorship"],
-      category: "Leadership"
-    },
     {
       name: "Dr. Omobola Oluwaseyi",
       role: "Mentor",

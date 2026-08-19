@@ -203,7 +203,7 @@ export default function HomePage() {
               <Link href="/initiatives" className="initiative-card">
                 <div className="card-image">
                   <Image 
-                    src="/image3.png"
+                    src="servral.png"
                     alt="Learning - GLLIA Learning Lab"
                     width={500}
                     height={300}
