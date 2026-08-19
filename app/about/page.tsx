@@ -45,121 +45,120 @@ export default function AboutPage() {
     },
     {
       name: "Mr Cornelius Arinze",
-      position: "team member",
+      position: "Team Member",
       image: "/offer.png",
       expertise: ["Admin"],
-      background: "",
+      background: "Mr Cornelius Arinze is a dedicated team member at GLLIA, contributing to the organization's mission of developing healthcare leaders across Africa.",
       website: "#",
       email: "info@goldenlampleadershipinitiativeafrica.org"
     },
     {
-      name: "mrs suzette Solomon.",
-      position: "team member",
+      name: "Mrs Suzette Solomon",
+      position: "Team Member",
       image: "/offer.png",
       expertise: ["Admin"],
-      background: "",
+      background: "Mrs Suzette Solomon is a valued team member at GLLIA, supporting the organization's initiatives and community development programs.",
       website: "#",
       email: "info@goldenlampleadershipinitiativeafrica.org"
-    },
-   
+    }
   ]
 
   // Mentors Data
   const mentors = [
     {
       name: "Dr. Omobola Oluwaseyi",
-      role: "Mentor",
+      role: "Lecturer",
       image: "/about6.png",
-      expertise: ["Nursing Education", "Clinical Practice"],
-      category: "Leadership"
+      expertise: [],
+      category: "Lecturer"
     },
     {
       name: "Gaknung Bonji K.",
-      role: "Research Director",
+      role: "Lecturer",
       qualification: "RN, RM, RNA, RPHN, BNSc, MSc., MPH",
       image: "/about7.png",
-      expertise: ["Research", "Public Health"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Joy Asufi",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about8.png",
-      expertise: ["Facilitation", "Nursing Education"],
-      category: "Clinical Practice"
+      expertise: [],
+      category: "Lecturer"
     },
     {
       name: "Dr. Bolarinwa",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about9.png",
-      expertise: ["Research", "Nursing Leadership"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Rafiat Anokwuru",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about10.png",
-      expertise: ["Nursing Education", "Facilitation"],
-      category: "Clinical Practice"
+      expertise: [],
+      category: ""
     },
     {
       name: "Oyinbo Silas",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about11.png",
-      expertise: ["Research", "Healthcare"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Mr. Fawole Isreal Opeyemi",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about12.png",
-      expertise: ["Facilitation", "Nursing Leadership"],
-      category: "Leadership"
+      expertise: [],
+      category: ""
     },
     {
       name: "Dr. Mercy Aladegboye",
-      role: "Mentor",
-      qualification: "MSc, PhD",
+      role: "Lecturer",
+      qualification: "",
       image: "/about13.png",
-      expertise: ["Nursing Education", "Evidence-Based Practice"],
-      category: "Evidence-Based Practice"
+      expertise: [""],
+      category: ""
     },
     {
       name: "Mr. Samuel Godwin Atayi",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about14.png",
-      expertise: ["Facilitation", "Research"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Dr. Onisile Deborah Foluke",
-      role: "Mentor",
-      qualification: "RN, RM, RPN, RPHN, BNSC, MSC, Ph.D., FWACPNM",
+      role: "Lecturer",
+      qualification: "",
       image: "/about15.png",
-      expertise: ["Nursing Education", "Research"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Mrs. Oluwatosin E. Ogunmuyiwa",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about16.png",
-      expertise: ["Facilitation", "Research"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Dr. Owolabi Augustine",
-      role: "Facilitator",
+      role: "Lecturer",
       image: "/about17.png",
-      expertise: ["Research", "Nursing Leadership"],
-      category: "Research"
+      expertise: [],
+      category: ""
     },
     {
       name: "Dr. Blessing C. Onyemachi-Osigwe",
-      role: "Facilitator",
-      qualification: "RN, RM, RPN, BNSc, MSc, PhD",
+      role: "Lecturer",
+      qualification: "",
       image: "/about18.png",
-      expertise: ["Research", "Nursing Leadership"],
-      category: "Research"
+      expertise: [],
+      category: ""
     }
   ]
 
@@ -597,7 +596,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Team Section */}
+        {/* Leadership Team Section - 3 cards in a row */}
         <section id="leadership" className="leadership-section" style={{ padding: '100px 0', background: 'var(--cream)' }}>
           <div className="container">
             <SectionHeading 
@@ -609,8 +608,8 @@ export default function AboutPage() {
 
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(2, 1fr)', 
-              gap: '30px', 
+              gridTemplateColumns: 'repeat(3, 1fr)', 
+              gap: '24px', 
               marginTop: '50px' 
             }}>
               {leadershipTeam.map((leader, index) => (
@@ -631,7 +630,7 @@ export default function AboutPage() {
                   <div style={{ 
                     position: 'relative', 
                     width: '100%', 
-                    aspectRatio: '4 / 5', 
+                    aspectRatio: '1 / 1', 
                     background: '#e8e5de',
                     overflow: 'hidden'
                   }}>
@@ -642,17 +641,17 @@ export default function AboutPage() {
                       style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
                     />
                   </div>
-                  <div style={{ padding: '24px' }}>
-                    <h3 style={{ font: '400 22px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{leader.name}</h3>
-                    <p style={{ fontSize: '14px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 12px' }}>{leader.position}</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
+                  <div style={{ padding: '20px' }}>
+                    <h3 style={{ font: '400 18px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{leader.name}</h3>
+                    <p style={{ fontSize: '13px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 10px' }}>{leader.position}</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '10px' }}>
                       {leader.expertise.map((exp, i) => (
                         <span key={i} style={{ 
-                          fontSize: '11px', 
+                          fontSize: '10px', 
                           background: 'rgba(212, 175, 55, 0.1)', 
                           color: 'var(--gold)', 
-                          padding: '2px 10px', 
-                          borderRadius: '12px',
+                          padding: '2px 8px', 
+                          borderRadius: '10px',
                           fontWeight: 600
                         }}>
                           {exp}
@@ -664,13 +663,14 @@ export default function AboutPage() {
                       border: 'none', 
                       color: 'var(--gold)', 
                       fontWeight: 600, 
-                      fontSize: '13px',
+                      fontSize: '12px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '6px'
+                      gap: '4px',
+                      padding: 0
                     }}>
-                      View Profile <ArrowRight size={14} />
+                      View Profile <ArrowRight size={12} />
                     </button>
                   </div>
                 </div>
@@ -679,75 +679,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Founder's Story Section */}
-        <section className="founder-section" style={{ padding: '100px 0', background: 'var(--white)' }}>
-          <div className="container">
-            <SectionHeading 
-              eyebrow="The Leadership Behind the Vision" 
-              title="The Founder's Story" 
-              centered
-            />
+        {/* Founder's Story Section - REMOVED */}
+        {/* The Founder's Story section has been completely removed */}
 
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1fr', 
-              gap: '60px', 
-              alignItems: 'center',
-              marginTop: '50px'
-            }}>
-              <div style={{ 
-                borderRadius: '12px', 
-                overflow: 'hidden',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.1)'
-              }}>
-                <Image 
-                  src="/about25.png"
-                  alt="Mrs. Oluyemisi Otitoloju - Founder"
-                  width={600}
-                  height={500}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-              <div>
-                <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  Founder & Convener
-                </span>
-                <h2 style={{ font: '400 36px Georgia, serif', color: 'var(--primary)', margin: '12px 0 8px' }}>
-                  Mrs. Oluyemisi Otitoloju
-                </h2>
-                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8', marginBottom: '16px' }}>
-                  Oluyemisi Otitoloju is a healthcare and leadership-development advocate focused on 
-                  strengthening nursing education, research, evidence-based healthcare practice, and 
-                  leadership development across Africa.
-                </p>
-                <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8', marginBottom: '24px' }}>
-                  Through GLLIA, she works to develop future healthcare leaders, strengthen research capacity 
-                  among nursing students and professionals, promote evidence-based practice, and support 
-                  healthcare-focused community development.
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '24px' }}>
-                  {['Nursing Leadership', 'Healthcare Research', 'Evidence-Based Practice', 'Leadership Development', 'Community Development'].map((area, i) => (
-                    <span key={i} style={{ 
-                      fontSize: '12px', 
-                      background: 'var(--cream)', 
-                      padding: '4px 14px', 
-                      borderRadius: '16px',
-                      color: 'var(--primary)',
-                      fontWeight: 500
-                    }}>
-                      {area}
-                    </span>
-                  ))}
-                </div>
-                <Link href="#" className="button button-gold">
-                  Read Full Story <ArrowRight size={17}/>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Mentors Section */}
+        {/* Mentors Section - Smaller cards like People at the Heart */}
         <section className="mentors-section" style={{ padding: '100px 0', background: 'var(--cream)' }}>
           <div className="container">
             <SectionHeading 
@@ -786,28 +721,28 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Mentor Cards */}
+            {/* Mentor Cards - Smaller size like People at the Heart */}
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(3, 1fr)', 
-              gap: '24px', 
+              gridTemplateColumns: 'repeat(4, 1fr)', 
+              gap: '16px', 
               marginTop: '40px' 
             }}>
               {filteredMentors.map((mentor, index) => (
                 <div key={index} style={{ 
                   background: 'var(--white)', 
-                  borderRadius: '12px', 
+                  borderRadius: '10px', 
                   overflow: 'hidden',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                   transition: 'transform 0.3s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-3px)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
                   <div style={{ 
                     position: 'relative', 
                     width: '100%', 
-                    aspectRatio: '4 / 5', 
+                    aspectRatio: '1 / 1', 
                     background: '#e8e5de',
                     overflow: 'hidden'
                   }}>
@@ -818,20 +753,20 @@ export default function AboutPage() {
                       style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
                     />
                   </div>
-                  <div style={{ padding: '20px' }}>
-                    <h4 style={{ font: '400 18px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{mentor.name}</h4>
-                    <p style={{ fontSize: '13px', color: 'var(--gold)', fontWeight: 600, margin: '2px 0' }}>{mentor.role}</p>
+                  <div style={{ padding: '14px' }}>
+                    <h4 style={{ font: '400 15px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{mentor.name}</h4>
+                    <p style={{ fontSize: '11px', color: 'var(--gold)', fontWeight: 600, margin: '2px 0' }}>{mentor.role}</p>
                     {mentor.qualification && (
-                      <p style={{ fontSize: '12px', color: 'var(--muted)', margin: '2px 0 10px' }}>{mentor.qualification}</p>
+                      <p style={{ fontSize: '10px', color: 'var(--muted)', margin: '2px 0 6px' }}>{mentor.qualification}</p>
                     )}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
                       {mentor.expertise.map((exp, i) => (
                         <span key={i} style={{ 
-                          fontSize: '10px', 
+                          fontSize: '9px', 
                           background: 'rgba(212, 175, 55, 0.1)', 
                           color: 'var(--gold)', 
-                          padding: '2px 8px', 
-                          borderRadius: '10px',
+                          padding: '1px 6px', 
+                          borderRadius: '8px',
                           fontWeight: 600
                         }}>
                           {exp}
@@ -843,15 +778,15 @@ export default function AboutPage() {
                       border: 'none', 
                       color: 'var(--gold)', 
                       fontWeight: 600, 
-                      fontSize: '12px',
+                      fontSize: '11px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '4px',
-                      marginTop: '10px',
+                      gap: '3px',
+                      marginTop: '6px',
                       padding: 0
                     }}>
-                      View Profile <ArrowRight size={12} />
+                      View Profile <ArrowRight size={10} />
                     </button>
                   </div>
                 </div>
@@ -986,8 +921,8 @@ export default function AboutPage() {
             
             <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
               <div style={{
-                width: '120px',
-                height: '120px',
+                width: '100px',
+                height: '100px',
                 borderRadius: '50%',
                 overflow: 'hidden',
                 flexShrink: 0,
@@ -996,19 +931,19 @@ export default function AboutPage() {
                 <Image 
                   src={leadershipTeam[selectedLeader].image}
                   alt={leadershipTeam[selectedLeader].name}
-                  width={120}
-                  height={120}
+                  width={100}
+                  height={100}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
                 />
               </div>
               <div>
-                <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '0' }}>
+                <h3 style={{ font: '400 24px Georgia, serif', color: 'var(--primary)', margin: '0' }}>
                   {leadershipTeam[selectedLeader].name}
                 </h3>
-                <p style={{ fontSize: '16px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 12px' }}>
+                <p style={{ fontSize: '15px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 10px' }}>
                   {leadershipTeam[selectedLeader].position}
                 </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
                   {leadershipTeam[selectedLeader].expertise.map((exp, i) => (
                     <span key={i} style={{ 
                       fontSize: '11px', 
@@ -1025,14 +960,14 @@ export default function AboutPage() {
               </div>
             </div>
             
-            <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
-              <h4 style={{ font: '600 16px Georgia, serif', color: 'var(--primary)', margin: '0 0 8px' }}>Professional Background</h4>
+            <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
+              <h4 style={{ font: '600 15px Georgia, serif', color: 'var(--primary)', margin: '0 0 6px' }}>Professional Background</h4>
               <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: '1.7' }}>
                 {leadershipTeam[selectedLeader].background}
               </p>
             </div>
             
-            <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
+            <div style={{ marginTop: '14px', display: 'flex', gap: '12px' }}>
               <a href={leadershipTeam[selectedLeader].website} style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
