@@ -63,111 +63,107 @@ export default function AboutPage() {
     }
   ]
 
-  // Mentors Data
+  // Mentors Data - All roles changed to "Facilitator"
   const mentors = [
     {
       name: "Dr. Omobola Oluwaseyi",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about6.png",
       expertise: [],
-      category: "Lecturer"
+      category: "Facilitator"
     },
     {
       name: "Gaknung Bonji K.",
-      role: "Lecturer",
+      role: "Facilitator",
       qualification: "RN, RM, RNA, RPHN, BNSc, MSc., MPH",
       image: "/about7.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Joy Asufi",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about8.png",
       expertise: [],
-      category: "Lecturer"
+      category: "Facilitator"
     },
     {
       name: "Dr. Bolarinwa",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about9.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Rafiat Anokwuru",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about10.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Oyinbo Silas",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about11.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Mr. Fawole Isreal Opeyemi",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about12.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Dr. Mercy Aladegboye",
-      role: "Lecturer",
+      role: "Facilitator",
       qualification: "",
       image: "/about13.png",
-      expertise: [""],
-      category: ""
+      expertise: [],
+      category: "Facilitator"
     },
     {
       name: "Mr. Samuel Godwin Atayi",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about14.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Dr. Onisile Deborah Foluke",
-      role: "Lecturer",
+      role: "Facilitator",
       qualification: "",
       image: "/about15.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Mrs. Oluwatosin E. Ogunmuyiwa",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about16.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Dr. Owolabi Augustine",
-      role: "Lecturer",
+      role: "Facilitator",
       image: "/about17.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     },
     {
       name: "Dr. Blessing C. Onyemachi-Osigwe",
-      role: "Lecturer",
+      role: "Facilitator",
       qualification: "",
       image: "/about18.png",
       expertise: [],
-      category: ""
+      category: "Facilitator"
     }
   ]
 
-  // Filter mentors
-  const filteredMentors = activeFilter === 'All' 
-    ? mentors 
-    : mentors.filter(m => m.category === activeFilter)
-
-  const filterOptions = ['All', 'Leadership', 'Research', 'Clinical Practice', 'Evidence-Based Practice', 'Data & Analytics']
+  // Filter mentors - No longer used but kept for compatibility
+  const filteredMentors = mentors
 
   return (
     <>
@@ -210,8 +206,16 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Our Story - Timeline Section */}
-        <section id="story" className="story-timeline-section" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+        {/* Our Story - Timeline Section - WITH ID="story" */}
+        <section 
+          id="story" 
+          className="story-timeline-section" 
+          style={{ 
+            padding: '100px 0', 
+            background: 'var(--cream)',
+            scrollMarginTop: '100px'
+          }}
+        >
           <div className="container">
             <SectionHeading 
               eyebrow="Our Story" 
@@ -596,12 +600,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Team Section - 3 cards in a row */}
-        <section id="leadership" className="leadership-section" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+        {/* Leadership Team Section - WITH ID="leadership" */}
+        <section 
+          id="leadership" 
+          className="leadership-section" 
+          style={{ 
+            padding: '100px 0', 
+            background: 'var(--cream)',
+            scrollMarginTop: '100px'
+          }}
+        >
           <div className="container">
             <SectionHeading 
               eyebrow="Leadership Team" 
-              title="Meet Our Leadership" 
+              title="Meet Our Team" 
               copy="The people guiding GLLIA's mission and shaping its programmes across Africa."
               centered
             />
@@ -680,10 +692,17 @@ export default function AboutPage() {
         </section>
 
         {/* Founder's Story Section - REMOVED */}
-        {/* The Founder's Story section has been completely removed */}
 
-        {/* Mentors Section - Smaller cards like People at the Heart */}
-        <section className="mentors-section" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+        {/* Mentors Section - WITH ID="mentors" */}
+        <section 
+          id="mentors" 
+          className="mentors-section" 
+          style={{ 
+            padding: '100px 0', 
+            background: 'var(--cream)',
+            scrollMarginTop: '100px'
+          }}
+        >
           <div className="container">
             <SectionHeading 
               eyebrow="Our Mentors" 
@@ -692,36 +711,7 @@ export default function AboutPage() {
               centered
             />
 
-            {/* Filter Buttons */}
-            <div style={{ 
-              display: 'flex', 
-              flexWrap: 'wrap', 
-              justifyContent: 'center', 
-              gap: '10px', 
-              marginTop: '40px' 
-            }}>
-              {filterOptions.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  style={{
-                    padding: '8px 20px',
-                    borderRadius: '30px',
-                    border: activeFilter === filter ? '2px solid var(--gold)' : '1px solid var(--border)',
-                    background: activeFilter === filter ? 'var(--gold)' : 'transparent',
-                    color: activeFilter === filter ? 'var(--primary)' : 'var(--muted)',
-                    fontWeight: 600,
-                    fontSize: '13px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-
-            {/* Mentor Cards - Smaller size like People at the Heart */}
+            {/* Mentor Cards */}
             <div style={{ 
               display: 'grid', 
               gridTemplateColumns: 'repeat(4, 1fr)', 
@@ -759,20 +749,6 @@ export default function AboutPage() {
                     {mentor.qualification && (
                       <p style={{ fontSize: '10px', color: 'var(--muted)', margin: '2px 0 6px' }}>{mentor.qualification}</p>
                     )}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
-                      {mentor.expertise.map((exp, i) => (
-                        <span key={i} style={{ 
-                          fontSize: '9px', 
-                          background: 'rgba(212, 175, 55, 0.1)', 
-                          color: 'var(--gold)', 
-                          padding: '1px 6px', 
-                          borderRadius: '8px',
-                          fontWeight: 600
-                        }}>
-                          {exp}
-                        </span>
-                      ))}
-                    </div>
                     <button style={{ 
                       background: 'transparent', 
                       border: 'none', 
@@ -807,7 +783,7 @@ export default function AboutPage() {
               <div>
                 <span className="eyebrow">The People Behind the Programmes</span>
                 <h2 style={{ font: '400 clamp(32px, 3.5vw, 48px) Georgia, serif', color: 'var(--primary)', margin: '16px 0 20px' }}>
-                  People Are at the Heart of Our Work
+                  People That Are at the Heart of Our Work
                 </h2>
                 <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8' }}>
                   From students beginning their research journey to experienced professionals sharing their 

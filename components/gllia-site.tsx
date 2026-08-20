@@ -47,6 +47,28 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [about, setAbout] = useState(false)
 
+  // Function to handle about dropdown link clicks
+  const handleAboutClick = (sectionId: string) => {
+    setAbout(false)
+    // Close mobile menu if open
+    if (open) setOpen(false)
+    
+    // Small delay to allow dropdown to close before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const headerOffset = 100
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }, 100)
+  }
+
   return (
     <>
       {/* Top Bar */}
@@ -84,16 +106,31 @@ export function Header() {
             <Link href="/">Home</Link>
             <Link href="/initiatives">Initiatives</Link>
             
-            {/* About Dropdown */}
+            {/* About Dropdown - FIXED */}
             <div className="nav-dropdown">
               <button onClick={() => setAbout(!about)} aria-expanded={about}>
                 About <ChevronDown size={15} />
               </button>
               {about && (
                 <div className="dropdown-menu">
-                  <Link href="/about">Our Story</Link>
-                  <Link href="/about#team">Leadership Team</Link>
-                  <Link href="/about#mentors">Mentors</Link>
+                  <button 
+                    onClick={() => handleAboutClick('story')}
+                    className="dropdown-link"
+                  >
+                    Our Story
+                  </button>
+                  <button 
+                    onClick={() => handleAboutClick('leadership')}
+                    className="dropdown-link"
+                  >
+                    Leadership Team
+                  </button>
+                  <button 
+                    onClick={() => handleAboutClick('mentors')}
+                    className="dropdown-link"
+                  >
+                    Mentors
+                  </button>
                 </div>
               )}
             </div>
@@ -220,7 +257,7 @@ export function SectionHeading({
 
 // ========== CALL TO ACTION ==========
 export function CTA({
-  title = 'Help shape Africa\'s future health.',
+  title = 'Help shape Africa\'s health future.',
   copy = 'Join a community of bold thinkers, dedicated mentors, and changemakers building a healthier continent.',
   button = 'Get involved'
 }: {
