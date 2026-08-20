@@ -3095,3 +3095,50 @@ button {
     font-size: 16px !important;
   }
 }
+
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add scroll margin to all sections with IDs */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Ensure button styles work */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.button-gold {
+  background: #d4af37;
+  color: #ffffff;
+  border-color: #d4af37;
+}
+
+.button-gold:hover {
+  background: transparent;
+  color: #d4af37;
+}
+
+.button-light {
+  background: #ffffff;
+  color: #081f41;
+  border-color: #ffffff;
+}
+
+.button-light:hover {
+  background: transparent;
+  color: #ffffff;
+}

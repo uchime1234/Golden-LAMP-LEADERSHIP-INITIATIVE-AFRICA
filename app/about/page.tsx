@@ -45,18 +45,18 @@ export default function AboutPage() {
     },
     {
       name: "Mr Cornelius Arinze",
-      position: "Team Member",
+      position: "Admin",
       image: "/offer.png",
-      expertise: ["Admin"],
+      expertise: [],
       background: "Mr Cornelius Arinze is a dedicated team member at GLLIA, contributing to the organization's mission of developing healthcare leaders across Africa.",
       website: "#",
       email: "info@goldenlampleadershipinitiativeafrica.org"
     },
     {
       name: "Mrs Suzette Solomon",
-      position: "Team Member",
+      position: "Admin",
       image: "/offer.png",
-      expertise: ["Admin"],
+      expertise: [],
       background: "Mrs Suzette Solomon is a valued team member at GLLIA, supporting the organization's initiatives and community development programs.",
       website: "#",
       email: "info@goldenlampleadershipinitiativeafrica.org"
@@ -95,7 +95,7 @@ export default function AboutPage() {
       category: "Facilitator"
     },
     {
-      name: "Rafiat Anokwuru",
+      name: "Dr. Rafiat Anokwuru",
       role: "Facilitator",
       image: "/about10.png",
       expertise: [],
@@ -236,6 +236,7 @@ export default function AboutPage() {
                 opacity: 0.3
               }} />
 
+              {/* Timeline items... keep the same as before */}
               {/* Timeline Item 1 */}
               <div className="timeline-item" style={{ 
                 display: 'grid', 
@@ -691,8 +692,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Founder's Story Section - REMOVED */}
-
         {/* Mentors Section - WITH ID="mentors" */}
         <section 
           id="mentors" 
@@ -711,7 +710,6 @@ export default function AboutPage() {
               centered
             />
 
-            {/* Mentor Cards */}
             <div style={{ 
               display: 'grid', 
               gridTemplateColumns: 'repeat(4, 1fr)', 

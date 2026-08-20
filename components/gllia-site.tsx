@@ -47,28 +47,6 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [about, setAbout] = useState(false)
 
-  // Function to handle about dropdown link clicks
-  const handleAboutClick = (sectionId: string) => {
-    setAbout(false)
-    // Close mobile menu if open
-    if (open) setOpen(false)
-    
-    // Small delay to allow dropdown to close before scrolling
-    setTimeout(() => {
-      const element = document.getElementById(sectionId)
-      if (element) {
-        const headerOffset = 100
-        const elementPosition = element.getBoundingClientRect().top
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }
-    }, 100)
-  }
-
   return (
     <>
       {/* Top Bar */}
@@ -106,31 +84,16 @@ export function Header() {
             <Link href="/">Home</Link>
             <Link href="/initiatives">Initiatives</Link>
             
-            {/* About Dropdown - FIXED */}
+            {/* About Dropdown - CORRECT LINKS */}
             <div className="nav-dropdown">
               <button onClick={() => setAbout(!about)} aria-expanded={about}>
                 About <ChevronDown size={15} />
               </button>
               {about && (
                 <div className="dropdown-menu">
-                  <button 
-                    onClick={() => handleAboutClick('story')}
-                    className="dropdown-link"
-                  >
-                    Our Story
-                  </button>
-                  <button 
-                    onClick={() => handleAboutClick('leadership')}
-                    className="dropdown-link"
-                  >
-                    Leadership Team
-                  </button>
-                  <button 
-                    onClick={() => handleAboutClick('mentors')}
-                    className="dropdown-link"
-                  >
-                    Mentors
-                  </button>
+                  <Link href="/about#story" onClick={() => setAbout(false)}>Our Story</Link>
+                  <Link href="/about#leadership" onClick={() => setAbout(false)}>Leadership Team</Link>
+                  <Link href="/about#mentors" onClick={() => setAbout(false)}>Mentors</Link>
                 </div>
               )}
             </div>
