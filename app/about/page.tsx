@@ -139,9 +139,9 @@ export default function AboutPage() {
       category: "Facilitator"
     },
     {
-      name: "Mrs. Oluwatosin E. Ogunmuyiwa",
+      name: "Dr. kolawole",
       role: "Facilitator",
-      image: "/about16.png",
+      image: "/dr-kola.jpg",
       expertise: [],
       category: "Facilitator"
     },
