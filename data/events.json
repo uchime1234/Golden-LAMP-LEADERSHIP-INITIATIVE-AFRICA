@@ -4,11 +4,11 @@
     "title": "2026 Undergraduate Nursing Research Challenge",
     "date": "31 October 2026",
     "location": "Ibadan, Nigeria",
+    "status": "upcoming",
     "description": "The 2026 Undergraduate Nursing Research Challenge is a national research competition organized by Golden Lamp Leadership Initiative Africa (GLLIA) to celebrate excellence, innovation, and leadership among undergraduate nursing students.",
     "description2": "The challenge provides an opportunity for emerging nurses to showcase outstanding research projects, gain recognition for their academic work, and contribute innovative ideas toward improving healthcare and nursing practice in Africa.",
     "image": "/events2.png",
-    "status": "upcoming",
-    "applications": "Applications Closed",
+    "applications": "Applications Open",
     "badge": "31 October 2026",
     "host": "Hosted by Golden Lamp Leadership Initiative Africa",
     "whatToExpect": [
@@ -36,6 +36,7 @@
     "title": "2025 Summit & Awards",
     "date": "12-14 September 2025",
     "location": "Ikeja, Lagos, Nigeria",
+    "status": "past",
     "description": "The second edition of the annual Undergraduate Nursing Research Summit and Award ceremony focused on strengthening research among undergraduate nursing students in Nigeria.",
     "image": "/events6.jpg",
     "theme": "From Basics to Cutting Edge: Advancing Nursing Through Research",
@@ -84,15 +85,14 @@
       "Worked with universities to identify strengths and weaknesses in students' research competence"
     ],
     "venue": "LTV Combo Hall, Ikeja, Lagos",
-    "deleted": false,
-    "status": "past",
-    "updatedAt": "2026-08-24T18:44:46.949Z"
+    "deleted": false
   },
   {
     "id": "3",
     "title": "2024 Summit & Awards",
     "date": "2024",
     "location": "Alagbaka, Akure, Nigeria",
+    "status": "past",
     "description": "The inaugural edition of the Undergraduate Nursing Research Summit and Award ceremony that launched GLLIA's commitment to advancing nursing research in Nigeria.",
     "image": "/events7.jpg",
     "year": "2024",
@@ -107,6 +107,7 @@
     "id": "4",
     "title": "Research Mentorship Programme",
     "date": "2024-2025",
+    "status": "past",
     "description": "An eight-week online mentorship programme that attracted 138 students from universities across Nigeria, taking them through academic research with guidance from lecturers from Nigeria and abroad.",
     "image": "/events8.jpg",
     "year": "2024-2025",

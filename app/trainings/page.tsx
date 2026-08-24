@@ -98,6 +98,16 @@ export default function TrainingsPage() {
                       <div className="training-meta">
                         <span><Clock size={14}/> {training.duration}</span>
                         <span><Users size={14}/> {training.cohort || 'Cohort 1'}</span>
+                        {/* ✅ STATUS BADGE */}
+                        {training.status === 'closed' && (
+                          <span className="status-badge closed">CLOSED</span>
+                        )}
+                        {training.status === 'open' && (
+                          <span className="status-badge open">OPEN</span>
+                        )}
+                        {training.status === 'upcoming' && (
+                          <span className="status-badge upcoming">UPCOMING</span>
+                        )}
                       </div>
                     </div>
                     <div className="training-expand-icon">
@@ -192,11 +202,21 @@ export default function TrainingsPage() {
                           </div>
                         )}
 
-                        <div className="training-cta">
-                          <Link href="/contact" className="button button-gold">
-                            Register interest <ArrowRight size={16}/>
-                          </Link>
-                        </div>
+                        {/* ✅ Only show Register button if status is NOT closed */}
+                        {training.status !== 'closed' && (
+                          <div className="training-cta">
+                            <Link href="/contact" className="button button-gold">
+                              Register interest <ArrowRight size={16}/>
+                            </Link>
+                          </div>
+                        )}
+
+                        {/* ✅ Show message if training is closed */}
+                        {training.status === 'closed' && (
+                          <div className="training-closed-message">
+                            <p>This training is currently closed. Check back later for new sessions!</p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

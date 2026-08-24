@@ -30,9 +30,9 @@ export default function EventsPage() {
   }
 
   // Find the featured event (upcoming) and past events
-  const featuredEvent = events.find((e: any) => e.type === 'upcoming' || e.status === 'upcoming')
+  const featuredEvent = events.find((e: any) => e.status === 'upcoming' || e.type === 'upcoming')
   const upcomingEvent = events.find((e: any) => e.upcomingImage)
-  const pastEvents = events.filter((e: any) => e.type === 'summit' || e.type === 'mentorship')
+  const pastEvents = events.filter((e: any) => e.type === 'summit' || e.type === 'mentorship' || e.status === 'past')
 
   if (loading) {
     return (
@@ -87,7 +87,23 @@ export default function EventsPage() {
                   <div className="event-meta">
                     <span><MapPin/> {featuredEvent.location}</span>
                     <span><CalendarDays/> {featuredEvent.applications || 'Applications Open'}</span>
+                    {/* ✅ STATUS BADGE */}
+                    {featuredEvent.status === 'closed' && (
+                      <span className="status-badge closed">APPLICATIONS CLOSED</span>
+                    )}
+                    {featuredEvent.status === 'past' && (
+                      <span className="status-badge past">PAST EVENT</span>
+                    )}
+                    {featuredEvent.status === 'upcoming' && (
+                      <span className="status-badge upcoming">UPCOMING</span>
+                    )}
                   </div>
+                  {/* ✅ Only show button if NOT closed or past */}
+                  {featuredEvent.status !== 'closed' && featuredEvent.status !== 'past' && (
+                    <Link href="/contact" className="button button-gold">
+                      Register your interest <ArrowRight size={16}/>
+                    </Link>
+                  )}
                 </div>
               </div>
             )}
@@ -112,6 +128,13 @@ export default function EventsPage() {
                           <b>{upcomingEvent.upcomingTitle || upcomingEvent.title}</b>
                           <small>{upcomingEvent.upcomingSubtitle || 'Submit your research now'}</small>
                         </span>
+                        {/* ✅ STATUS BADGE */}
+                        {upcomingEvent.status === 'closed' && (
+                          <span className="status-badge closed">CLOSED</span>
+                        )}
+                        {upcomingEvent.status === 'upcoming' && (
+                          <span className="status-badge upcoming">UPCOMING</span>
+                        )}
                         <div className="event-expand-icon">
                           {expandedEvent === 0 ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                         </div>
@@ -148,6 +171,19 @@ export default function EventsPage() {
                               <span>{upcomingEvent.host || 'Hosted by Golden Lamp Leadership Initiative Africa'}</span>
                             </div>
                           </div>
+                          {/* ✅ Only show Register button if NOT closed */}
+                          {upcomingEvent.status !== 'closed' && (
+                            <div className="training-cta">
+                              <Link href="/contact" className="button button-gold">
+                                Register interest <ArrowRight size={16}/>
+                              </Link>
+                            </div>
+                          )}
+                          {upcomingEvent.status === 'closed' && (
+                            <div className="training-closed-message">
+                              <p>Applications are currently closed. Check back later!</p>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}
@@ -188,6 +224,8 @@ export default function EventsPage() {
                           <span><strong>{event.stats.weeks}</strong> Weeks</span>
                         </div>
                       )}
+                      {/* ✅ PAST EVENT BADGE */}
+                      <span className="status-badge past">PAST EVENT</span>
                       {event.participatingUniversities && (
                         <button className="past-event-toggle" onClick={() => toggleEvent(index + 1)}>
                           {expandedEvent === index + 1 ? 'Show less' : 'Learn more'}

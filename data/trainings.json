@@ -6,6 +6,7 @@
     "description": "An advanced research-development programme for nurses and nursing researchers.",
     "duration": "6 Months",
     "cohort": "Cohort 1",
+    "status": "open",
     "image": "/training2.jpg",
     "expanded": {
       "overview": "The Cutting Edge Intensive Challenge is an advanced research-development programme designed for nurses and nursing researchers who want to take their skills to the next level.",
@@ -30,6 +31,7 @@
     "description": "A 6-week research mentorship programme designed to build nursing research capacity.",
     "duration": "6 Weeks",
     "cohort": "Cohort 1",
+    "status": "open",
     "image": "/training4.jpg",
     "expanded": {
       "overview": "This research mentorship programme is specifically designed to build nursing research capacity. Organized in collaboration with the Nigerian Universities Nursing Students' Association (NUNSA) National, it takes nursing students and young nurses beyond simply writing a school research project and helps them understand how research actually works.",
@@ -51,12 +53,13 @@
   },
   {
     "id": "3",
-    "title": "Evidence-Based Practice Implementation Training(1)",
+    "title": "Evidence-Based Practice Implementation Training",
     "eyebrow": "Implementation Training",
-    "description": "This program equip nurses with intense practical skills to improve patient care using proven research.",
+    "description": "Equip nurses with practical skills to improve patient care using proven research.",
     "duration": "31 May 2026",
     "cohort": "Cohort 1",
-    "image": "training5.jpg",
+    "status": "closed",
+    "image": "/training5.jpg",
     "expanded": {
       "overview": "This training is organized by GLLIA in collaboration with Jos University Teaching Hospital (JUTH). Its purpose is to equip nurses with practical skills for using research evidence and real-world strategies to improve patient care.",
       "goals": [
@@ -69,8 +72,6 @@
       "date": "2 – 31 May 2026",
       "partner": "In collaboration with Jos University Teaching Hospital"
     },
-    "deleted": false,
-    "status": "closed",
-    "updatedAt": "2026-08-24T18:31:32.632Z"
+    "deleted": false
   }
 ]
