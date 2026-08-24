@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Mrs. Oluyemisi Otitoloju",
+    "position": "Founder & Chief Executive Officer",
+    "expertise": ["Leadership", "Nursing Research", "Healthcare Advocacy"],
+    "background": "Oluyemisi Otitoloju is a healthcare and leadership-development advocate focused on strengthening nursing education, research, evidence-based healthcare practice, and leadership development across Africa.",
+    "image": "/about1.png",
+    "website": "#",
+    "email": "info@goldenlampleadershipinitiativeafrica.org",
+    "category": "leadership",
+    "deleted": false
+  },
+  {
+    "id": "2",
+    "name": "Mr Cornelius Arinze",
+    "position": "Admin",
+    "expertise": [],
+    "background": "Mr Cornelius Arinze is a dedicated team member at GLLIA, contributing to the organization's mission of developing healthcare leaders across Africa.",
+    "image": "/offer.png",
+    "website": "#",
+    "email": "info@goldenlampleadershipinitiativeafrica.org",
+    "category": "leadership",
+    "deleted": false
+  },
+  {
+    "id": "3",
+    "name": "Mrs Suzette Solomon",
+    "position": "Admin",
+    "expertise": [],
+    "background": "Mrs Suzette Solomon is a valued team member at GLLIA, supporting the organization's initiatives and community development programs.",
+    "image": "/offer.png",
+    "website": "#",
+    "email": "info@goldenlampleadershipinitiativeafrica.org",
+    "category": "leadership",
+    "deleted": false
+  }
+]

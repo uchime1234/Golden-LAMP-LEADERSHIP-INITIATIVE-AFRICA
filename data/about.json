@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "eyebrow": "ABOUT GOLDEN LAMP LEADERSHIP INITIATIVE AFRICA",
+    "title": "Building Leaders. Advancing Healthcare. Transforming Africa.",
+    "description": "Golden Lamp Leadership Initiative Africa is committed to developing effective leaders, advancing nursing research, promoting evidence-based practice, and creating opportunities that strengthen individuals, organizations, and communities across Africa.",
+    "image": "/about19.jpg"
+  },
+  "story": {
+    "eyebrow": "Our Story",
+    "title": "From an Idea to a Growing Leadership Movement",
+    "description": "How GLLIA evolved from a vision into a growing movement for nursing leadership and research across Africa.",
+    "timeline": [
+      {
+        "id": "1",
+        "number": "01",
+        "title": "The Beginning",
+        "subtitle": "How It All Started",
+        "description": "GLLIA was founded with a clear mission: to address the leadership gap in African healthcare. The founders recognized that strong leadership and research capacity were essential for transforming health systems across the continent.",
+        "image": "/about20.png"
+      },
+      {
+        "id": "2",
+        "number": "02",
+        "title": "Building the Foundation",
+        "subtitle": "Early Programmes & Growth",
+        "description": "GLLIA launched its first leadership development programmes, bringing together healthcare professionals, students, and mentors. Community engagement and capacity-building initiatives began to take shape across Nigeria.",
+        "image": "/about21.png"
+      },
+      {
+        "id": "3",
+        "number": "03",
+        "title": "Advancing Nursing Research",
+        "subtitle": "Research & Mentorship",
+        "description": "GLLIA developed structured nursing research programmes and mentorship opportunities, creating pathways for students and professionals to build research capacity, present their work, and contribute to evidence-based practice.",
+        "image": "/about22.png"
+      },
+      {
+        "id": "4",
+        "number": "04",
+        "title": "From Research to Practice",
+        "subtitle": "Evidence-Based Practice",
+        "description": "GLLIA expanded its focus to include evidence-based practice and professional development, helping healthcare professionals translate research findings into practical solutions for patient care and community health.",
+        "image": "/about23.png"
+      },
+      {
+        "id": "5",
+        "number": "05",
+        "title": "The Future",
+        "subtitle": "A Stronger Generation of Leaders",
+        "description": "GLLIA's vision is to develop a stronger generation of healthcare leaders across Africa, equipped with the skills, knowledge, and networks to transform health systems and improve outcomes for communities across the continent.",
+        "image": "/about24.png"
+      }
+    ]
+  },
+  "drives": {
+    "eyebrow": "What Drives Us",
+    "title": "Our Work Is Built Around Three Principles",
+    "principles": [
+      {
+        "icon": "Users",
+        "title": "Leadership",
+        "description": "Developing capable, ethical and visionary leaders who can create meaningful change in healthcare and communities across Africa."
+      },
+      {
+        "icon": "BookOpen",
+        "title": "Research",
+        "description": "Strengthening nursing research and developing the next generation of researchers who will drive evidence-based practice and innovation."
+      },
+      {
+        "icon": "Heart",
+        "title": "Impact",
+        "description": "Turning knowledge and evidence into practical solutions for healthcare and communities, creating lasting change that improves lives."
+      }
+    ]
+  },
+  "visionMission": {
+    "vision": "Excellence in Leadership in Africa.",
+    "mission": "Providing Access to Resources That Promote Growth and Development.",
+    "missionDescription": "We further our mission by providing access to resources that promote growth and development in Africa for both organizations and individuals.",
+    "goals": [
+      "Leadership Development",
+      "Nursing Research",
+      "Skills Acquisition",
+      "Evidence-Based Practice",
+      "Community Development",
+      "Strategic Partnerships"
+    ]
+  },
+  "peopleHeart": {
+    "eyebrow": "The People Behind the Programmes",
+    "title": "People That Are at the Heart of Our Work",
+    "description": "From students beginning their research journey to experienced professionals sharing their knowledge, GLLIA is built around a community committed to learning, leadership and impact.",
+    "images": [
+      "/about26.png",
+      "/about27.png",
+      "/about28.png",
+      "/about29.png",
+      "/about30.png",
+      "/about31.png"
+    ]
+  },
+  "founder": {
+    "eyebrow": "The Leadership Behind the Vision",
+    "title": "The Founder's Story",
+    "name": "Mrs. Oluyemisi Otitoloju",
+    "image": "/about25.png",
+    "description": "Oluyemisi Otitoloju is a healthcare and leadership-development advocate focused on strengthening nursing education, research, evidence-based healthcare practice, and leadership development across Africa.",
+    "description2": "Through GLLIA, she works to develop future healthcare leaders, strengthen research capacity among nursing students and professionals, promote evidence-based practice, and support healthcare-focused community development.",
+    "areas": [
+      "Nursing Leadership",
+      "Healthcare Research",
+      "Evidence-Based Practice",
+      "Leadership Development",
+      "Community Development"
+    ]
+  }
+}

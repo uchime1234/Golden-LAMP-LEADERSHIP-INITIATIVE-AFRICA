@@ -47,6 +47,24 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [about, setAbout] = useState(false)
 
+  const handleAboutClick = (sectionId: string) => {
+    setAbout(false)
+    if (open) setOpen(false)
+    setTimeout(() => {
+      // Try to scroll within the current page first
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const headerOffset = 100
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+      } else {
+        // If not found, navigate to about page with hash
+        window.location.href = `/about#${sectionId}`
+      }
+    }, 100)
+  }
+
   return (
     <>
       {/* Top Bar */}
@@ -84,16 +102,22 @@ export function Header() {
             <Link href="/">Home</Link>
             <Link href="/initiatives">Initiatives</Link>
             
-            {/* About Dropdown - CORRECT LINKS */}
+            {/* About Dropdown - FIXED */}
             <div className="nav-dropdown">
               <button onClick={() => setAbout(!about)} aria-expanded={about}>
                 About <ChevronDown size={15} />
               </button>
               {about && (
                 <div className="dropdown-menu">
-                  <Link href="/about#story" onClick={() => setAbout(false)}>Our Story</Link>
-                  <Link href="/about#leadership" onClick={() => setAbout(false)}>Leadership Team</Link>
-                  <Link href="/about#mentors" onClick={() => setAbout(false)}>Mentors</Link>
+                  <button onClick={() => handleAboutClick('story')} className="dropdown-link">
+                    Our Story
+                  </button>
+                  <button onClick={() => handleAboutClick('leadership')} className="dropdown-link">
+                    Leadership Team
+                  </button>
+                  <button onClick={() => handleAboutClick('mentors')} className="dropdown-link">
+                    Mentors
+                  </button>
                 </div>
               )}
             </div>

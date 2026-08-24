@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "text": "GLLIA's initiatives have transformed my understanding of leadership in healthcare.",
+    "author": "Dr. Amina Hassan",
+    "role": "Healthcare Leader",
+    "image": "/initiative3.jpg",
+    "deleted": false
+  },
+  {
+    "id": "2",
+    "text": "The programs have significantly uplifted the community, empowering many.",
+    "author": "Chief Oluwaseun Adeyemi",
+    "role": "Community Advocate",
+    "image": "/initiative4.jpg",
+    "deleted": false
+  },
+  {
+    "id": "3",
+    "text": "I have witnessed firsthand how GLLIA fosters innovation and growth.",
+    "author": "Prof. Chioma Eze",
+    "role": "Nursing Educator",
+    "image": "/initiative5.jpg",
+    "deleted": false
+  }
+]

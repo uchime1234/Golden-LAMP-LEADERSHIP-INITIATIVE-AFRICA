@@ -1,0 +1,155 @@
+{
+  "hero1": {
+    "title": "Empowering Communities Through Leadership",
+    "description": "At GLLIA, we believe in harnessing the power of effective leadership to inspire change in healthcare and beyond. Our initiatives are designed to uplift and innovate across Africa's communities.",
+    "image": "/initiative1.jpg",
+    "buttonText": "Discover Our Initiatives",
+    "buttonLink": "#goals"
+  },
+  "hero2": {
+    "title": "G.L.L.I.A.",
+    "description": "G.L.L.I.A. is a non-governmental organization that is focused on nursing leadership development, research, and community growth in Africa.",
+    "image": "/initiative2.jpg"
+  },
+  "hero3": {
+    "description": "We design practical programmes that empower nurses, students, researchers, and healthcare professionals with the knowledge, skills, mentorship, and opportunities needed to transform healthcare across Africa.",
+    "image": "/initiative7.jpg"
+  },
+  "goals": [
+    {
+      "id": "1",
+      "icon": "Users",
+      "title": "Nurturing Effective Leaders",
+      "description": "To nurture effective leaders in the healthcare and community sectors. GLLIA focuses on developing capable, visionary, and responsible leaders who can contribute meaningfully to healthcare organizations and communities."
+    },
+    {
+      "id": "2",
+      "icon": "TrendingUp",
+      "title": "Advancing Leadership Development",
+      "description": "To advance leadership development initiatives in healthcare and community-based organizations by encouraging continuous learning, collaboration, innovation, and stronger approaches to service delivery."
+    },
+    {
+      "id": "3",
+      "icon": "BookOpen",
+      "title": "Skills Acquisition & Evidence-Based Practice",
+      "description": "To support innovative skills acquisition programs in health-based organizations and assist individuals in promoting evidence-based implementation in their respective fields to achieve impact."
+    },
+    {
+      "id": "4",
+      "icon": "Heart",
+      "title": "Strategic Partnerships & Community Development",
+      "description": "Through strategic partnerships with other health-based and leadership development organizations, we provide support for health-based community development initiatives that address community health needs."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "text": "GLLIA's initiatives have transformed my understanding of leadership in healthcare.",
+      "name": "Dr. Amina Hassan",
+      "role": "Healthcare Leader",
+      "image": "/initiative3.jpg"
+    },
+    {
+      "id": "2",
+      "text": "The programs have significantly uplifted the community, empowering many.",
+      "name": "Chief Oluwaseun Adeyemi",
+      "role": "Community Advocate",
+      "image": "/initiative4.jpg"
+    },
+    {
+      "id": "3",
+      "text": "I have witnessed firsthand how GLLIA fosters innovation and growth.",
+      "name": "Prof. Chioma Eze",
+      "role": "Nursing Educator",
+      "image": "/initiative5.jpg"
+    }
+  ],
+  "visionMission": {
+    "vision": "We exist to promote Excellence in Leadership in Africa.",
+    "mission": "We further our vision by providing access to resources that promote growth and development in Africa for both organizations and individuals.",
+    "goals": [
+      "Nurture effective leaders in the healthcare and community sectors.",
+      "Advance leadership development initiatives in healthcare and community-based organisations.",
+      "Support innovative skills acquisition programs in health-based organisations.",
+      "Provide support for health-based community development initiatives through strategic partnerships."
+    ]
+  },
+  "journey": [
+    {
+      "id": "1",
+      "number": "01",
+      "icon": "BookOpen",
+      "title": "Gain Knowledge",
+      "description": "Individuals gain knowledge and research skills through our structured programmes."
+    },
+    {
+      "id": "2",
+      "number": "02",
+      "icon": "GraduationCap",
+      "title": "Develop Skills",
+      "description": "Through mentorship, participants develop research projects and professional capabilities."
+    },
+    {
+      "id": "3",
+      "number": "03",
+      "icon": "Stethoscope",
+      "title": "Apply Evidence",
+      "description": "Participants learn to apply evidence and research findings to real healthcare problems."
+    },
+    {
+      "id": "4",
+      "number": "04",
+      "icon": "Users",
+      "title": "Lead Change",
+      "description": "They become researchers, advocates, clinicians and leaders capable of influencing healthcare."
+    }
+  ],
+  "impactStories": [
+    {
+      "id": "1",
+      "name": "Victor Saliu",
+      "detail": "2025 Undergraduate Nursing Research Challenge — 1st Place",
+      "school": "Redeemer's University",
+      "prize": "₦2,000,000 Prize",
+      "badge": "🥇 1st Place",
+      "badgeClass": "gold",
+      "image": "/initiative8.png",
+      "quote": "The programme transformed how I approach nursing research. I never imagined my work could have such impact on patient care."
+    },
+    {
+      "id": "2",
+      "name": "Okeagbo Mary Omolola",
+      "detail": "2025 Undergraduate Nursing Research Challenge — Finalist",
+      "school": "Obafemi Awolowo University",
+      "prize": "2ND PLACE",
+      "badge": "🥈 2nd Place",
+      "badgeClass": "silver",
+      "image": "/initiative9.png",
+      "quote": "GLLIA gave me the platform to showcase my research and connect with mentors who believed in my potential."
+    },
+    {
+      "id": "3",
+      "name": "Uba Paul-Silas",
+      "detail": "2025 Undergraduate Nursing Research Challenge — Finalist",
+      "school": "Redeemer's University",
+      "prize": "3RD PLACE WINNER",
+      "badge": "🥉 3rd Place",
+      "badgeClass": "bronze",
+      "image": "/initiative10.png",
+      "quote": "The mentorship I received through GLLIA helped me refine my research and present it with confidence."
+    },
+    {
+      "id": "4",
+      "name": "Winners 2024",
+      "detail": "Get involved in community service events that support our mission and values.",
+      "badge": "2024",
+      "badgeClass": "year",
+      "image": "/initiative11.png",
+      "list": [
+        "🏆 Top Researchers",
+        "🏅 Best Institutions",
+        "⭐ Outstanding Mentors"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "1",
+    "title": "2026 Undergraduate Nursing Research Challenge",
+    "date": "31 October 2026",
+    "location": "Ibadan, Nigeria",
+    "description": "The 2026 Undergraduate Nursing Research Challenge is a national research competition organized by Golden Lamp Leadership Initiative Africa (GLLIA) to celebrate excellence, innovation, and leadership among undergraduate nursing students.",
+    "description2": "The challenge provides an opportunity for emerging nurses to showcase outstanding research projects, gain recognition for their academic work, and contribute innovative ideas toward improving healthcare and nursing practice in Africa.",
+    "image": "/events2.png",
+    "status": "upcoming",
+    "applications": "Applications Closed",
+    "badge": "31 October 2026",
+    "host": "Hosted by Golden Lamp Leadership Initiative Africa",
+    "whatToExpect": [
+      "Outstanding Undergraduate Nursing Research",
+      "Student Research Presentations",
+      "Best Research Project Awards",
+      "Best Student Recognition",
+      "School/Institution Recognition",
+      "Supervisor Recognition",
+      "Networking with Nursing Leaders and Researchers",
+      "Mentorship and Research Opportunities"
+    ],
+    "whoCanParticipate": "The challenge is designed primarily for undergraduate nursing students, particularly final-year students with completed or substantially developed research projects. Participating institutions can also compete for recognition based on the quality and performance of their students' research submissions.",
+    "whyItMatters": "Nursing research plays an important role in improving patient care, strengthening clinical practice, influencing healthcare policy, and addressing healthcare challenges. GLLIA's research initiative was created to help strengthen research capacity among young nurses and encourage them to become evidence-driven healthcare professionals and future leaders.",
+    "previousEditions": "Previous editions have attracted students from universities across Nigeria and have recognized exceptional student researchers and institutions.",
+    "closing": "Come and celebrate the next generation of nursing researchers and leaders as they transform research into ideas, evidence, and impact.",
+    "upcomingDate": "31 Oct 2026",
+    "upcomingTitle": "Undergraduate Nursing Research Challenge",
+    "upcomingSubtitle": "Submit your research now",
+    "upcomingImage": "/events4.png",
+    "deleted": false
+  },
+  {
+    "id": "2",
+    "title": "2025 Summit & Awards",
+    "date": "12-14 September 2025",
+    "location": "Ikeja, Lagos, Nigeria",
+    "description": "The second edition of the annual Undergraduate Nursing Research Summit and Award ceremony focused on strengthening research among undergraduate nursing students in Nigeria.",
+    "image": "/events6.jpg",
+    "theme": "From Basics to Cutting Edge: Advancing Nursing Through Research",
+    "stats": {
+      "submissions": "63",
+      "universities": "10"
+    },
+    "year": "2025",
+    "type": "summit",
+    "participatingUniversities": [
+      "Redeemer's University",
+      "Obafemi Awolowo University",
+      "University of Benin",
+      "Achievers University",
+      "University of Ibadan",
+      "and others"
+    ],
+    "winners": [
+      {
+        "place": "🏆 1st Place",
+        "name": "Victor Saliu",
+        "school": "Redeemer's University",
+        "prize": "₦2,000,000",
+        "class": "gold"
+      },
+      {
+        "place": "🥈 2nd Place",
+        "name": "Okeagbo Mary Omolola",
+        "school": "Obafemi Awolowo University",
+        "prize": "",
+        "class": "silver"
+      },
+      {
+        "place": "🥉 3rd Place",
+        "name": "Uba Paul-Silas",
+        "school": "Redeemer's University",
+        "prize": "₦250,000",
+        "class": "bronze"
+      }
+    ],
+    "extra": "Redeemer's University also received a ₦1,000,000 departmental award.",
+    "mentorship": "An eight-week research mentorship programme ran from December 2024 to February 2025, involving lecturers from Nigeria and abroad volunteering to mentor students online. The programme attracted 138 students from universities across Nigeria.",
+    "otherInitiatives": [
+      "Sponsored a faculty member to attend an international research conference in Senegal",
+      "Supported students through an essay competition",
+      "Worked with universities to identify strengths and weaknesses in students' research competence"
+    ],
+    "venue": "LTV Combo Hall, Ikeja, Lagos",
+    "deleted": false
+  },
+  {
+    "id": "3",
+    "title": "2024 Summit & Awards",
+    "date": "2024",
+    "location": "Alagbaka, Akure, Nigeria",
+    "description": "The inaugural edition of the Undergraduate Nursing Research Summit and Award ceremony that launched GLLIA's commitment to advancing nursing research in Nigeria.",
+    "image": "/events7.jpg",
+    "year": "2024",
+    "type": "summit",
+    "stats": {
+      "submissions": "40+",
+      "universities": "8"
+    },
+    "deleted": false
+  },
+  {
+    "id": "4",
+    "title": "Research Mentorship Programme",
+    "date": "2024-2025",
+    "description": "An eight-week online mentorship programme that attracted 138 students from universities across Nigeria, taking them through academic research with guidance from lecturers from Nigeria and abroad.",
+    "image": "/events8.jpg",
+    "year": "2024-2025",
+    "type": "mentorship",
+    "stats": {
+      "students": "138",
+      "weeks": "8"
+    },
+    "deleted": false
+  }
+]

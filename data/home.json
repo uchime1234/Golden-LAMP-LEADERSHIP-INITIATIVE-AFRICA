@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "id": "1",
+        "title": "Empowering Communities Through Leadership",
+        "subtitle": "At GLLIA, we believe in harnessing the power of effective leadership to inspire change in healthcare and beyond. Our initiatives are designed to uplift and innovate across Africa's communities.",
+        "image": "/GLLI17.jpg"
+      },
+      {
+        "id": "2",
+        "title": "Empowering Leaders for Tomorrow",
+        "subtitle": "At GLLIA, we believe in the power of community-driven change. Join us in our mission to nurture effective leaders in healthcare and community services across Africa. Together, we can uplift our communities through innovation and impactful programs.",
+        "image": "/GLLI28.jpg"
+      }
+    ]
+  },
+  "ceo": {
+    "name": "Mrs. Oluyemisi Otitoloju",
+    "position": "Founder & Chief Executive Officer, Golden Lamp Leadership Initiative Africa (GLLIA)",
+    "description": "Oluyemisi Otitoloju is a healthcare and leadership-development advocate focused on strengthening nursing education, research, evidence-based healthcare practice, and leadership development across Africa. Through GLLIA, she works to develop future healthcare leaders, strengthen research capacity among nursing students and professionals, promote evidence-based practice, and support healthcare-focused community development.",
+    "keyAreas": [
+      "Nursing Leadership",
+      "Healthcare Research",
+      "Evidence-Based Practice",
+      "Leadership Development",
+      "Community Development"
+    ],
+    "quote": "Building stronger healthcare systems by developing leaders, advancing research, and turning evidence into meaningful impact across African communities.",
+    "closing": "Empowering Leaders. Advancing Evidence. Strengthening Communities.",
+    "image": "/ceo-potrait.jpg"
+  },
+  "initiatives": [
+    {
+      "id": "1",
+      "tag": "Leadership",
+      "title": "Emerging Leaders Fellowship",
+      "description": "A transformational fellowship for the next generation of health systems leaders.",
+      "image": "/image1.png",
+      "link": "/initiatives"
+    },
+    {
+      "id": "2",
+      "tag": "Community",
+      "title": "Health Changemakers",
+      "description": "Connecting bold ideas with communities and partners ready to make change happen.",
+      "image": "/image2.png",
+      "link": "/initiatives"
+    },
+    {
+      "id": "3",
+      "tag": "Learning",
+      "title": "GLLIA Learning Lab",
+      "description": "Practical, accessible learning experiences for leaders at every stage.",
+      "image": "/image3.png",
+      "link": "/initiatives"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "text": "GLLIA gave me the research skills and confidence to present my nursing project at a national conference. I never imagined my undergraduate research could have such impact.",
+      "author": "Adebayo Ogunwale",
+      "role": "Final Year Nursing Student, University of Ibadan",
+      "image": "/corn1.jpg"
+    },
+    {
+      "id": "2",
+      "text": "GLLIA's programs have significantly uplifted the community, empowering many to pursue careers in healthcare leadership.",
+      "author": "Chief Oluwaseun Adeyemi",
+      "role": "Community Advocate",
+      "image": "/corn2.jpg"
+    },
+    {
+      "id": "3",
+      "text": "I have witnessed firsthand how GLLIA fosters innovation and growth in nursing research and evidence-based practice.",
+      "author": "Prof. Chioma Eze",
+      "role": "Nursing Educator",
+      "image": "/corn3.jpg"
+    }
+  ],
+  "values": [
+    {
+      "icon": "Users",
+      "title": "People first",
+      "description": "We center the lived experiences of communities and the leaders who serve them."
+    },
+    {
+      "icon": "Lightbulb",
+      "title": "Bold thinking",
+      "description": "We make space for ideas that challenge the status quo and open new possibilities."
+    },
+    {
+      "icon": "HeartHandshake",
+      "title": "Shared power",
+      "description": "We believe sustainable change is built through collaboration, trust, and mutual accountability."
+    },
+    {
+      "icon": "BookOpen",
+      "title": "Practical learning",
+      "description": "We turn insight into action with tools leaders can use from day one."
+    }
+  ]
+}

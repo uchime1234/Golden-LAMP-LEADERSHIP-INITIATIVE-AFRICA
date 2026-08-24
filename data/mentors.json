@@ -1,0 +1,132 @@
+[
+  {
+    "id": "1",
+    "name": "Dr. Omobola Oluwaseyi",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Nursing Education", "Clinical Practice"],
+    "image": "/about6.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "2",
+    "name": "Gaknung Bonji K.",
+    "role": "Facilitator",
+    "qualification": "RN, RM, RNA, RPHN, BNSc, MSc., MPH",
+    "expertise": ["Research", "Public Health"],
+    "image": "/about7.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "3",
+    "name": "Joy Asufi",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Facilitation", "Nursing Education"],
+    "image": "/about8.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "4",
+    "name": "Dr. Bolarinwa",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Research", "Nursing Leadership"],
+    "image": "/about9.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "5",
+    "name": "Dr. Rafiat Anokwuru",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Nursing Education", "Facilitation"],
+    "image": "/about10.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "6",
+    "name": "Oyinbo Silas",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Research", "Healthcare"],
+    "image": "/about11.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "7",
+    "name": "Mr. Fawole Isreal Opeyemi",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Facilitation", "Nursing Leadership"],
+    "image": "/about12.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "8",
+    "name": "Dr. Mercy Aladegboye",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Nursing Education", "Evidence-Based Practice"],
+    "image": "/about13.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "9",
+    "name": "Mr. Samuel Godwin Atayi",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Facilitation", "Research"],
+    "image": "/about14.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "10",
+    "name": "Dr. Onisile Deborah Foluke",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Nursing Education", "Research"],
+    "image": "/about15.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "11",
+    "name": "Dr. Kolawole",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": [],
+    "image": "/dr-kola.jpg",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "12",
+    "name": "Dr. Owolabi Augustine",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Research", "Nursing Leadership"],
+    "image": "/about17.png",
+    "category": "Facilitator",
+    "deleted": false
+  },
+  {
+    "id": "13",
+    "name": "Dr. Blessing C. Onyemachi-Osigwe",
+    "role": "Facilitator",
+    "qualification": "",
+    "expertise": ["Research", "Nursing Leadership"],
+    "image": "/about18.png",
+    "category": "Facilitator",
+    "deleted": false
+  }
+]

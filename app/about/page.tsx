@@ -2,25 +2,25 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
-import { 
-  ArrowRight, 
-  Award, 
-  BookOpen, 
-  ChevronDown, 
-  ChevronLeft, 
-  ChevronRight, 
-  GraduationCap, 
-  Heart, 
-  Lightbulb, 
-  MapPin, 
-  Mail, 
-  Phone, 
-  Quote, 
-  Star, 
-  Target, 
-  TrendingUp, 
-  Users, 
+import { useState, useEffect } from 'react'
+import {
+  ArrowRight,
+  Award,
+  BookOpen,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  GraduationCap,
+  Heart,
+  Lightbulb,
+  MapPin,
+  Mail,
+  Phone,
+  Quote,
+  Star,
+  Target,
+  TrendingUp,
+  Users,
   X,
   Globe,
   Briefcase
@@ -28,152 +28,91 @@ import {
 import { CTA, Footer, Header, SectionHeading, images } from '@/components/gllia-site'
 
 export default function AboutPage() {
+  const [loading, setLoading] = useState(true)
+  const [aboutData, setAboutData] = useState<any>(null)
+  const [teamData, setTeamData] = useState<any[]>([])
+  const [mentorData, setMentorData] = useState<any[]>([])
+
   // State for modal
   const [selectedLeader, setSelectedLeader] = useState<number | null>(null)
-  const [activeFilter, setActiveFilter] = useState('All')
 
-  // Leadership Team Data
-  const leadershipTeam = [
-    {
-      name: "Mrs. Oluyemisi Otitoloju",
-      position: "Founder & Chief Executive Officer",
-      image: "/about1.png",
-      expertise: ["Leadership", "Nursing Research", "Healthcare Advocacy"],
-      background: "Oluyemisi Otitoloju is a healthcare and leadership-development advocate focused on strengthening nursing education, research, evidence-based healthcare practice, and leadership development across Africa.",
-      website: "#",
-      email: "info@goldenlampleadershipinitiativeafrica.org"
-    },
-    {
-      name: "Mr Cornelius Arinze",
-      position: "Admin",
-      image: "/offer.png",
-      expertise: [],
-      background: "Mr Cornelius Arinze is a dedicated team member at GLLIA, contributing to the organization's mission of developing healthcare leaders across Africa.",
-      website: "#",
-      email: "info@goldenlampleadershipinitiativeafrica.org"
-    },
-    {
-      name: "Mrs Suzette Solomon",
-      position: "Admin",
-      image: "/offer.png",
-      expertise: [],
-      background: "Mrs Suzette Solomon is a valued team member at GLLIA, supporting the organization's initiatives and community development programs.",
-      website: "#",
-      email: "info@goldenlampleadershipinitiativeafrica.org"
+  // Fetch data from JSON
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [aboutRes, teamRes, mentorRes] = await Promise.all([
+          fetch('/api/content/about'),
+          fetch('/api/content/team'),
+          fetch('/api/content/mentors')
+        ])
+        const about = await aboutRes.json()
+        const team = await teamRes.json()
+        const mentors = await mentorRes.json()
+        
+        setAboutData(about)
+        setTeamData(team.filter((t: any) => !t.deleted))
+        setMentorData(mentors.filter((m: any) => !m.deleted))
+      } catch (error) {
+        console.error('Failed to fetch about data:', error)
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
+    fetchData()
+  }, [])
 
-  // Mentors Data - All roles changed to "Facilitator"
-  const mentors = [
-    {
-      name: "Dr. Omobola Oluwaseyi",
-      role: "Facilitator",
-      image: "/about6.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Gaknung Bonji K.",
-      role: "Facilitator",
-      qualification: "RN, RM, RNA, RPHN, BNSc, MSc., MPH",
-      image: "/about7.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Joy Asufi",
-      role: "Facilitator",
-      image: "/about8.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. Bolarinwa",
-      role: "Facilitator",
-      image: "/about9.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. Rafiat Anokwuru",
-      role: "Facilitator",
-      image: "/about10.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Oyinbo Silas",
-      role: "Facilitator",
-      image: "/about11.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Mr. Fawole Isreal Opeyemi",
-      role: "Facilitator",
-      image: "/about12.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. Mercy Aladegboye",
-      role: "Facilitator",
-      qualification: "",
-      image: "/about13.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Mr. Samuel Godwin Atayi",
-      role: "Facilitator",
-      image: "/about14.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. Onisile Deborah Foluke",
-      role: "Facilitator",
-      qualification: "",
-      image: "/about15.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. kolawole",
-      role: "Facilitator",
-      image: "/dr-kola.jpg",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. Owolabi Augustine",
-      role: "Facilitator",
-      image: "/about17.png",
-      expertise: [],
-      category: "Facilitator"
-    },
-    {
-      name: "Dr. Blessing C. Onyemachi-Osigwe",
-      role: "Facilitator",
-      qualification: "",
-      image: "/about18.png",
-      expertise: [],
-      category: "Facilitator"
+  // Scroll to section on load
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      const id = hash.replace('#', '')
+      const element = document.getElementById(id)
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 300)
+      }
     }
-  ]
+  }, [loading])
 
-  // Filter mentors - No longer used but kept for compatibility
-  const filteredMentors = mentors
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault()
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.history.pushState(null, '', `#${targetId}`)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{
+          width: '40px',
+          height: '40px',
+          border: '3px solid var(--gold)',
+          borderTop: '3px solid transparent',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite'
+        }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    )
+  }
+
+  if (!aboutData) return null
+
+  const { hero, story, drives, visionMission, peopleHeart, founder } = aboutData
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero - Who We Are */}
-        <section 
+        {/* Hero - FROM JSON */}
+        <section
           className="about-hero"
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(8,31,65,.92) 0%, rgba(8,31,65,.75) 50%, rgba(8,31,65,.4) 100%), url('/about19.jpg')`,
+            backgroundImage: `linear-gradient(90deg, rgba(8,31,65,.92) 0%, rgba(8,31,65,.75) 50%, rgba(8,31,65,.4) 100%), url('${hero.image}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             padding: '120px 0',
@@ -185,413 +124,121 @@ export default function AboutPage() {
         >
           <div className="container">
             <div style={{ maxWidth: '600px' }}>
-              <span className="eyebrow eyebrow-light">ABOUT GOLDEN LAMP LEADERSHIP INITIATIVE AFRICA</span>
+              <span className="eyebrow eyebrow-light">{hero.eyebrow}</span>
               <h1 style={{ fontSize: 'clamp(40px, 5vw, 64px)', fontFamily: 'Georgia, serif', fontWeight: 400, margin: '20px 0', lineHeight: '1.05' }}>
-                Building Leaders. Advancing Healthcare. Transforming Africa.
+                {hero.title}
               </h1>
               <p style={{ fontSize: '18px', color: '#e2e9f2', lineHeight: '1.7', marginBottom: '30px' }}>
-                Golden Lamp Leadership Initiative Africa is committed to developing effective leaders, 
-                advancing nursing research, promoting evidence-based practice, and creating opportunities 
-                that strengthen individuals, organizations, and communities across Africa.
+                {hero.description}
               </p>
               <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <Link href="#story" className="button button-gold">
+                <a href="#story" className="button button-gold" onClick={(e) => handleSmoothScroll(e, 'story')}>
                   Our Story <ArrowRight size={17}/>
-                </Link>
-                <Link href="#leadership" className="button button-light">
+                </a>
+                <a href="#leadership" className="button button-light" onClick={(e) => handleSmoothScroll(e, 'leadership')}>
                   Meet Our Team <ArrowRight size={17}/>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Our Story - Timeline Section - WITH ID="story" */}
-        <section 
-          id="story" 
-          className="story-timeline-section" 
-          style={{ 
-            padding: '100px 0', 
-            background: 'var(--cream)',
-            scrollMarginTop: '100px'
-          }}
-        >
+        {/* Our Story - FROM JSON */}
+        <section id="story" className="story-timeline-section" style={{ padding: '100px 0', background: 'var(--cream)', scrollMarginTop: '100px' }}>
           <div className="container">
-            <SectionHeading 
-              eyebrow="Our Story" 
-              title="From an Idea to a Growing Leadership Movement" 
-              copy="How GLLIA evolved from a vision into a growing movement for nursing leadership and research across Africa."
+            <SectionHeading
+              eyebrow={story.eyebrow}
+              title={story.title}
+              copy={story.description}
               centered
             />
 
             <div className="timeline" style={{ position: 'relative', marginTop: '60px', paddingLeft: '40px' }}>
-              {/* Timeline Line */}
-              <div style={{ 
-                position: 'absolute', 
-                left: '15px', 
-                top: 0, 
-                bottom: 0, 
-                width: '3px', 
-                background: 'var(--gold)',
-                opacity: 0.3
-              }} />
+              <div style={{ position: 'absolute', left: '15px', top: 0, bottom: 0, width: '3px', background: 'var(--gold)', opacity: 0.3 }} />
 
-              {/* Timeline items... keep the same as before */}
-              {/* Timeline Item 1 */}
-              <div className="timeline-item" style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '40px', 
-                marginBottom: '60px',
-                position: 'relative'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  left: '-33px', 
-                  top: '10px', 
-                  width: '16px', 
-                  height: '16px', 
-                  borderRadius: '50%', 
-                  background: 'var(--gold)',
-                  border: '3px solid var(--cream)'
-                }} />
-                <div>
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--gold)' }}>01 — The Beginning</span>
-                  <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '10px 0 16px' }}>How It All Started</h3>
-                  <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                    GLLIA was founded with a clear mission: to address the leadership gap in African healthcare. 
-                    The founders recognized that strong leadership and research capacity were essential for 
-                    transforming health systems across the continent.
-                  </p>
+              {story.timeline.map((item: any) => (
+                <div key={item.id} className="timeline-item" style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '40px',
+                  marginBottom: '60px',
+                  position: 'relative'
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    left: '-33px',
+                    top: '10px',
+                    width: '16px',
+                    height: '16px',
+                    borderRadius: '50%',
+                    background: 'var(--gold)',
+                    border: '3px solid var(--cream)'
+                  }} />
+                  <div>
+                    <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--gold)' }}>{item.number} — {item.title}</span>
+                    <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '10px 0 16px' }}>{item.subtitle}</h3>
+                    <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8' }}>{item.description}</p>
+                  </div>
+                  <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
+                    <Image src={item.image} alt={item.title} width={500} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
                 </div>
-                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-                  <Image 
-                    src="/about20.png"
-                    alt="The Beginning"
-                    width={500}
-                    height={300}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              </div>
-
-              {/* Timeline Item 2 */}
-              <div className="timeline-item" style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '40px', 
-                marginBottom: '60px',
-                position: 'relative'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  left: '-33px', 
-                  top: '10px', 
-                  width: '16px', 
-                  height: '16px', 
-                  borderRadius: '50%', 
-                  background: 'var(--gold)',
-                  border: '3px solid var(--cream)'
-                }} />
-                <div>
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--gold)' }}>02 — Building the Foundation</span>
-                  <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '10px 0 16px' }}>Early Programmes & Growth</h3>
-                  <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                    GLLIA launched its first leadership development programmes, bringing together healthcare 
-                    professionals, students, and mentors. Community engagement and capacity-building initiatives 
-                    began to take shape across Nigeria.
-                  </p>
-                </div>
-                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-                  <Image 
-                    src="/about21.png"
-                    alt="Building the Foundation"
-                    width={500}
-                    height={300}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              </div>
-
-              {/* Timeline Item 3 */}
-              <div className="timeline-item" style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '40px', 
-                marginBottom: '60px',
-                position: 'relative'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  left: '-33px', 
-                  top: '10px', 
-                  width: '16px', 
-                  height: '16px', 
-                  borderRadius: '50%', 
-                  background: 'var(--gold)',
-                  border: '3px solid var(--cream)'
-                }} />
-                <div>
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--gold)' }}>03 — Advancing Nursing Research</span>
-                  <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '10px 0 16px' }}>Research & Mentorship</h3>
-                  <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                    GLLIA developed structured nursing research programmes and mentorship opportunities, 
-                    creating pathways for students and professionals to build research capacity, present 
-                    their work, and contribute to evidence-based practice.
-                  </p>
-                </div>
-                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-                  <Image 
-                    src="/about22.png"
-                    alt="Advancing Nursing Research"
-                    width={500}
-                    height={300}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              </div>
-
-              {/* Timeline Item 4 */}
-              <div className="timeline-item" style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '40px', 
-                marginBottom: '60px',
-                position: 'relative'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  left: '-33px', 
-                  top: '10px', 
-                  width: '16px', 
-                  height: '16px', 
-                  borderRadius: '50%', 
-                  background: 'var(--gold)',
-                  border: '3px solid var(--cream)'
-                }} />
-                <div>
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--gold)' }}>04 — From Research to Practice</span>
-                  <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '10px 0 16px' }}>Evidence-Based Practice</h3>
-                  <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                    GLLIA expanded its focus to include evidence-based practice and professional development, 
-                    helping healthcare professionals translate research findings into practical solutions 
-                    for patient care and community health.
-                  </p>
-                </div>
-                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-                  <Image 
-                    src="/about23.png"
-                    alt="From Research to Practice"
-                    width={500}
-                    height={300}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              </div>
-
-              {/* Timeline Item 5 */}
-              <div className="timeline-item" style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '40px', 
-                position: 'relative'
-              }}>
-                <div style={{ 
-                  position: 'absolute', 
-                  left: '-33px', 
-                  top: '10px', 
-                  width: '16px', 
-                  height: '16px', 
-                  borderRadius: '50%', 
-                  background: 'var(--gold)',
-                  border: '3px solid var(--cream)'
-                }} />
-                <div>
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--gold)' }}>05 — The Future</span>
-                  <h3 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: '10px 0 16px' }}>A Stronger Generation of Leaders</h3>
-                  <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                    GLLIA's vision is to develop a stronger generation of healthcare leaders across Africa, 
-                    equipped with the skills, knowledge, and networks to transform health systems and improve 
-                    outcomes for communities across the continent.
-                  </p>
-                </div>
-                <div style={{ borderRadius: '12px', overflow: 'hidden' }}>
-                  <Image 
-                    src="/about24.png"
-                    alt="The Future"
-                    width={500}
-                    height={300}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* What Drives Us - Three Principles */}
-        <section className="drives-section" style={{ 
-          padding: '100px 0', 
-          background: 'var(--primary)',
-          color: 'var(--white)'
-        }}>
+        {/* What Drives Us - FROM JSON */}
+        <section className="drives-section" style={{ padding: '100px 0', background: 'var(--primary)', color: 'var(--white)' }}>
           <div className="container">
-            <SectionHeading 
-              eyebrow="What Drives Us" 
-              title="Our Work Is Built Around Three Principles" 
-              centered
-            />
-
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(3, 1fr)', 
-              gap: '30px', 
-              marginTop: '50px' 
-            }}>
-              <div style={{ 
-                background: 'rgba(255,255,255,0.05)', 
-                padding: '40px 32px', 
-                borderRadius: '12px', 
-                border: '1px solid rgba(255,255,255,0.1)',
-                textAlign: 'center'
-              }}>
-                <div style={{ 
-                  background: 'rgba(212, 175, 55, 0.15)', 
-                  width: '70px', 
-                  height: '70px', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  color: 'var(--gold)',
-                  margin: '0 auto 20px'
-                }}>
-                  <Users size={34} />
-                </div>
-                <h3 style={{ font: '400 26px Georgia, serif', margin: '0 0 12px' }}>Leadership</h3>
-                <p style={{ fontSize: '15px', color: '#c5d1df', lineHeight: '1.7' }}>
-                  Developing capable, ethical and visionary leaders who can create meaningful change 
-                  in healthcare and communities across Africa.
-                </p>
-              </div>
-
-              <div style={{ 
-                background: 'rgba(255,255,255,0.05)', 
-                padding: '40px 32px', 
-                borderRadius: '12px', 
-                border: '1px solid rgba(255,255,255,0.1)',
-                textAlign: 'center'
-              }}>
-                <div style={{ 
-                  background: 'rgba(212, 175, 55, 0.15)', 
-                  width: '70px', 
-                  height: '70px', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  color: 'var(--gold)',
-                  margin: '0 auto 20px'
-                }}>
-                  <BookOpen size={34} />
-                </div>
-                <h3 style={{ font: '400 26px Georgia, serif', margin: '0 0 12px' }}>Research</h3>
-                <p style={{ fontSize: '15px', color: '#c5d1df', lineHeight: '1.7' }}>
-                  Strengthening nursing research and developing the next generation of researchers 
-                  who will drive evidence-based practice and innovation.
-                </p>
-              </div>
-
-              <div style={{ 
-                background: 'rgba(255,255,255,0.05)', 
-                padding: '40px 32px', 
-                borderRadius: '12px', 
-                border: '1px solid rgba(255,255,255,0.1)',
-                textAlign: 'center'
-              }}>
-                <div style={{ 
-                  background: 'rgba(212, 175, 55, 0.15)', 
-                  width: '70px', 
-                  height: '70px', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  color: 'var(--gold)',
-                  margin: '0 auto 20px'
-                }}>
-                  <Heart size={34} />
-                </div>
-                <h3 style={{ font: '400 26px Georgia, serif', margin: '0 0 12px' }}>Impact</h3>
-                <p style={{ fontSize: '15px', color: '#c5d1df', lineHeight: '1.7' }}>
-                  Turning knowledge and evidence into practical solutions for healthcare and communities, 
-                  creating lasting change that improves lives.
-                </p>
-              </div>
+            <SectionHeading eyebrow={drives.eyebrow} title={drives.title} centered />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', marginTop: '50px' }}>
+              {drives.principles.map((principle: any, index: number) => {
+                const IconMap: any = { Users: Users, BookOpen: BookOpen, Heart: Heart }
+                const IconComponent = IconMap[principle.icon] || Users
+                return (
+                  <div key={index} style={{ background: 'rgba(255,255,255,0.05)', padding: '40px 32px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                    <div style={{ background: 'rgba(212, 175, 55, 0.15)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold)', margin: '0 auto 20px' }}>
+                      <IconComponent size={34} />
+                    </div>
+                    <h3 style={{ font: '400 26px Georgia, serif', margin: '0 0 12px' }}>{principle.title}</h3>
+                    <p style={{ fontSize: '15px', color: '#c5d1df', lineHeight: '1.7' }}>{principle.description}</p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
 
-        {/* Mission + Vision Section */}
+        {/* Mission + Vision - FROM JSON */}
         <section className="mission-vision-section" style={{ padding: '100px 0', background: 'var(--white)' }}>
           <div className="container">
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1fr', 
-              gap: '60px', 
-              alignItems: 'center' 
-            }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
               <div>
                 <span className="eyebrow">Our Vision</span>
                 <h2 style={{ font: '400 clamp(36px, 4vw, 56px) Georgia, serif', color: 'var(--primary)', margin: '12px 0 20px' }}>
-                  Excellence in Leadership in Africa.
+                  {visionMission.vision}
                 </h2>
                 <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                  We envision a future where African healthcare is transformed by leaders who are ethical, 
-                  visionary, and equipped to create meaningful change in their communities.
+                  We envision a future where African healthcare is transformed by leaders who are ethical, visionary, and equipped to create meaningful change in their communities.
                 </p>
               </div>
               <div>
                 <span className="eyebrow">Our Mission</span>
                 <h2 style={{ font: '400 clamp(28px, 3vw, 40px) Georgia, serif', color: 'var(--primary)', margin: '12px 0 20px' }}>
-                  Providing Access to Resources That Promote Growth and Development.
+                  {visionMission.mission}
                 </h2>
                 <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                  We further our mission by providing access to resources that promote growth and development 
-                  in Africa for both organizations and individuals.
+                  {visionMission.missionDescription}
                 </p>
               </div>
             </div>
 
-            {/* Our Goals */}
             <div style={{ marginTop: '60px', paddingTop: '60px', borderTop: '1px solid var(--border)' }}>
-              <SectionHeading 
-                eyebrow="Our Goals" 
-                title="What We're Working Toward" 
-                centered
-              />
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(3, 1fr)', 
-                gap: '20px', 
-                marginTop: '30px' 
-              }}>
-                {[
-                  'Leadership Development',
-                  'Nursing Research',
-                  'Skills Acquisition',
-                  'Evidence-Based Practice',
-                  'Community Development',
-                  'Strategic Partnerships'
-                ].map((goal, index) => (
-                  <div key={index} style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '12px',
-                    background: 'var(--cream)',
-                    padding: '14px 20px',
-                    borderRadius: '8px'
-                  }}>
+              <SectionHeading eyebrow="Our Goals" title="What We're Working Toward" centered />
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', marginTop: '30px' }}>
+                {visionMission.goals.map((goal: string, index: number) => (
+                  <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'var(--cream)', padding: '14px 20px', borderRadius: '8px' }}>
                     <Award size={18} color="var(--gold)" />
                     <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--primary)' }}>{goal}</span>
                   </div>
@@ -601,90 +248,53 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Leadership Team Section - WITH ID="leadership" */}
-        <section 
-          id="leadership" 
-          className="leadership-section" 
-          style={{ 
-            padding: '100px 0', 
-            background: 'var(--cream)',
-            scrollMarginTop: '100px'
-          }}
-        >
+        {/* Founder's Story - FROM JSON */}
+        <section className="founder-section" style={{ padding: '100px 0', background: 'var(--white)' }}>
           <div className="container">
-            <SectionHeading 
-              eyebrow="Leadership Team" 
-              title="Meet Our Team" 
-              copy="The people guiding GLLIA's mission and shaping its programmes across Africa."
-              centered
-            />
+            <SectionHeading eyebrow={founder.eyebrow} title={founder.title} centered />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center', marginTop: '50px' }}>
+              <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 8px 30px rgba(0,0,0,0.1)' }}>
+                <Image src={founder.image} alt={founder.name} width={600} height={500} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div>
+                <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Founder & Convener</span>
+                <h2 style={{ font: '400 36px Georgia, serif', color: 'var(--primary)', margin: '12px 0 8px' }}>{founder.name}</h2>
+                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8', marginBottom: '16px' }}>{founder.description}</p>
+                <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: '1.8', marginBottom: '24px' }}>{founder.description2}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '24px' }}>
+                  {founder.areas.map((area: string, i: number) => (
+                    <span key={i} style={{ fontSize: '12px', background: 'var(--cream)', padding: '4px 14px', borderRadius: '16px', color: 'var(--primary)', fontWeight: 500 }}>{area}</span>
+                  ))}
+                </div>
+                <Link href="#" className="button button-gold">Read Full Story <ArrowRight size={17}/></Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(3, 1fr)', 
-              gap: '24px', 
-              marginTop: '50px' 
-            }}>
-              {leadershipTeam.map((leader, index) => (
-                <div 
-                  key={index}
-                  style={{ 
-                    background: 'var(--white)', 
-                    borderRadius: '12px', 
-                    overflow: 'hidden',
-                    boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                    transition: 'transform 0.3s ease',
-                    cursor: 'pointer'
-                  }}
+        {/* Leadership Team - FROM JSON */}
+        <section id="leadership" className="leadership-section" style={{ padding: '100px 0', background: 'var(--cream)', scrollMarginTop: '100px' }}>
+          <div className="container">
+            <SectionHeading eyebrow="Leadership Team" title="Meet Our Team" copy="The people guiding GLLIA's mission and shaping its programmes across Africa." centered />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginTop: '50px' }}>
+              {teamData.map((leader: any, index: number) => (
+                <div key={leader.id} style={{ background: 'var(--white)', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'transform 0.3s ease', cursor: 'pointer' }}
                   onClick={() => setSelectedLeader(index)}
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
-                  <div style={{ 
-                    position: 'relative', 
-                    width: '100%', 
-                    aspectRatio: '1 / 1', 
-                    background: '#e8e5de',
-                    overflow: 'hidden'
-                  }}>
-                    <Image 
-                      src={leader.image}
-                      alt={leader.name}
-                      fill
-                      style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
-                    />
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', background: '#e8e5de', overflow: 'hidden' }}>
+                    <Image src={leader.image} alt={leader.name} fill style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
                   </div>
                   <div style={{ padding: '20px' }}>
                     <h3 style={{ font: '400 18px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{leader.name}</h3>
                     <p style={{ fontSize: '13px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 10px' }}>{leader.position}</p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '10px' }}>
-                      {leader.expertise.map((exp, i) => (
-                        <span key={i} style={{ 
-                          fontSize: '10px', 
-                          background: 'rgba(212, 175, 55, 0.1)', 
-                          color: 'var(--gold)', 
-                          padding: '2px 8px', 
-                          borderRadius: '10px',
-                          fontWeight: 600
-                        }}>
-                          {exp}
-                        </span>
+                      {leader.expertise && leader.expertise.map((exp: string, i: number) => (
+                        <span key={i} style={{ fontSize: '10px', background: 'rgba(212, 175, 55, 0.1)', color: 'var(--gold)', padding: '2px 8px', borderRadius: '10px', fontWeight: 600 }}>{exp}</span>
                       ))}
                     </div>
-                    <button style={{ 
-                      background: 'transparent', 
-                      border: 'none', 
-                      color: 'var(--gold)', 
-                      fontWeight: 600, 
-                      fontSize: '12px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      padding: 0
-                    }}>
-                      View Profile <ArrowRight size={12} />
-                    </button>
+                    <button style={{ background: 'transparent', border: 'none', color: 'var(--gold)', fontWeight: 600, fontSize: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0 }}>View Profile <ArrowRight size={12} /></button>
                   </div>
                 </div>
               ))}
@@ -692,76 +302,24 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Mentors Section - WITH ID="mentors" */}
-        <section 
-          id="mentors" 
-          className="mentors-section" 
-          style={{ 
-            padding: '100px 0', 
-            background: 'var(--cream)',
-            scrollMarginTop: '100px'
-          }}
-        >
+        {/* Mentors - FROM JSON */}
+        <section id="mentors" className="mentors-section" style={{ padding: '100px 0', background: 'var(--cream)', scrollMarginTop: '100px' }}>
           <div className="container">
-            <SectionHeading 
-              eyebrow="Our Mentors" 
-              title="Guided by Experience. Empowered to Lead." 
-              copy="Our mentors bring experience across nursing, research, healthcare leadership, academia, evidence-based practice, and related fields. Through mentorship, they help emerging professionals transform knowledge into meaningful impact."
-              centered
-            />
-
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(4, 1fr)', 
-              gap: '16px', 
-              marginTop: '40px' 
-            }}>
-              {filteredMentors.map((mentor, index) => (
-                <div key={index} style={{ 
-                  background: 'var(--white)', 
-                  borderRadius: '10px', 
-                  overflow: 'hidden',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                  transition: 'transform 0.3s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-3px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            <SectionHeading eyebrow="Our Mentors" title="Guided by Experience. Empowered to Lead." copy="Our mentors bring experience across nursing, research, healthcare leadership, academia, evidence-based practice, and related fields. Through mentorship, they help emerging professionals transform knowledge into meaningful impact." centered />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginTop: '40px' }}>
+              {mentorData.map((mentor: any) => (
+                <div key={mentor.id} style={{ background: 'var(--white)', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', transition: 'transform 0.3s ease' }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-3px)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                 >
-                  <div style={{ 
-                    position: 'relative', 
-                    width: '100%', 
-                    aspectRatio: '1 / 1', 
-                    background: '#e8e5de',
-                    overflow: 'hidden'
-                  }}>
-                    <Image 
-                      src={mentor.image}
-                      alt={mentor.name}
-                      fill
-                      style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
-                    />
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', background: '#e8e5de', overflow: 'hidden' }}>
+                    <Image src={mentor.image} alt={mentor.name} fill style={{ objectFit: 'cover', objectPosition: 'center 20%' }} />
                   </div>
                   <div style={{ padding: '14px' }}>
                     <h4 style={{ font: '400 15px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{mentor.name}</h4>
                     <p style={{ fontSize: '11px', color: 'var(--gold)', fontWeight: 600, margin: '2px 0' }}>{mentor.role}</p>
-                    {mentor.qualification && (
-                      <p style={{ fontSize: '10px', color: 'var(--muted)', margin: '2px 0 6px' }}>{mentor.qualification}</p>
-                    )}
-                    <button style={{ 
-                      background: 'transparent', 
-                      border: 'none', 
-                      color: 'var(--gold)', 
-                      fontWeight: 600, 
-                      fontSize: '11px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '3px',
-                      marginTop: '6px',
-                      padding: 0
-                    }}>
-                      View Profile <ArrowRight size={10} />
-                    </button>
+                    {mentor.qualification && <p style={{ fontSize: '10px', color: 'var(--muted)', margin: '2px 0 6px' }}>{mentor.qualification}</p>}
+                    <button style={{ background: 'transparent', border: 'none', color: 'var(--gold)', fontWeight: 600, fontSize: '11px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '3px', marginTop: '6px', padding: 0 }}>View Profile <ArrowRight size={10} /></button>
                   </div>
                 </div>
               ))}
@@ -769,49 +327,22 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* People Are at the Heart Section */}
+        {/* People Are at the Heart - FROM JSON */}
         <section className="people-heart-section" style={{ padding: '100px 0', background: 'var(--white)' }}>
           <div className="container">
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1fr', 
-              gap: '60px', 
-              alignItems: 'center' 
-            }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
               <div>
-                <span className="eyebrow">The People Behind the Programmes</span>
-                <h2 style={{ font: '400 clamp(32px, 3.5vw, 48px) Georgia, serif', color: 'var(--primary)', margin: '16px 0 20px' }}>
-                  People That Are at the Heart of Our Work
-                </h2>
-                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8' }}>
-                  From students beginning their research journey to experienced professionals sharing their 
-                  knowledge, GLLIA is built around a community committed to learning, leadership and impact.
-                </p>
+                <span className="eyebrow">{peopleHeart.eyebrow}</span>
+                <h2 style={{ font: '400 clamp(32px, 3.5vw, 48px) Georgia, serif', color: 'var(--primary)', margin: '16px 0 20px' }}>{peopleHeart.title}</h2>
+                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: '1.8' }}>{peopleHeart.description}</p>
                 <div style={{ marginTop: '24px' }}>
-                  <Link href="/initiatives" className="button button-gold">
-                    Explore Our Initiatives <ArrowRight size={17}/>
-                  </Link>
+                  <Link href="/initiatives" className="button button-gold">Explore Our Initiatives <ArrowRight size={17}/></Link>
                 </div>
               </div>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1fr 1fr', 
-                gap: '12px' 
-              }}>
-                {[26, 27, 28, 29, 30, 31].map((num) => (
-                  <div key={num} style={{ 
-                    borderRadius: '8px', 
-                    overflow: 'hidden',
-                    aspectRatio: '1/1',
-                    background: '#e8e5de'
-                  }}>
-                    <Image 
-                      src={`/about${num}.png`}
-                      alt={`Community ${num}`}
-                      width={200}
-                      height={200}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
-                    />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                {peopleHeart.images.map((img: string, index: number) => (
+                  <div key={index} style={{ borderRadius: '8px', overflow: 'hidden', aspectRatio: '1/1', background: '#e8e5de' }}>
+                    <Image src={img} alt={`Community ${index + 1}`} width={200} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
                   </div>
                 ))}
               </div>
@@ -819,35 +350,17 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Final CTA Section */}
-        <section className="final-cta-section" style={{ 
-          padding: '100px 0', 
-          background: 'var(--primary)',
-          color: 'var(--white)',
-          textAlign: 'center'
-        }}>
+        {/* Final CTA */}
+        <section className="final-cta-section" style={{ padding: '100px 0', background: 'var(--primary)', color: 'var(--white)', textAlign: 'center' }}>
           <div className="container">
-            <h2 style={{ font: '400 clamp(32px, 4vw, 52px) Georgia, serif', margin: '0 0 16px' }}>
-              Be Part of the GLLIA Community
-            </h2>
+            <h2 style={{ font: '400 clamp(32px, 4vw, 52px) Georgia, serif', margin: '0 0 16px' }}>Be Part of the GLLIA Community</h2>
             <p style={{ fontSize: '18px', color: '#c5d1df', maxWidth: '600px', margin: '0 auto 36px', lineHeight: '1.7' }}>
-              Whether you are a student, nurse, researcher, healthcare professional, mentor, institution or 
-              organization, there is a place for you to contribute to the movement.
+              Whether you are a student, nurse, researcher, healthcare professional, mentor, institution or organization, there is a place for you to contribute to the movement.
             </p>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/initiatives" className="button button-gold">
-                Join an Initiative <ArrowRight size={17}/>
-              </Link>
-              <Link href="/contact" className="button button-light">
-                Become a Mentor <ArrowRight size={17}/>
-              </Link>
-              <Link href="/contact" className="button" style={{ 
-                background: 'transparent', 
-                border: '2px solid rgba(255,255,255,0.3)',
-                color: 'var(--white)'
-              }}>
-                Partner With GLLIA <ArrowRight size={17}/>
-              </Link>
+              <Link href="/initiatives" className="button button-gold">Join an Initiative <ArrowRight size={17}/></Link>
+              <Link href="/contact" className="button button-light">Become a Mentor <ArrowRight size={17}/></Link>
+              <Link href="/contact" className="button" style={{ background: 'transparent', border: '2px solid rgba(255,255,255,0.3)', color: 'var(--white)' }}>Partner With GLLIA <ArrowRight size={17}/></Link>
             </div>
           </div>
         </section>
@@ -855,115 +368,30 @@ export default function AboutPage() {
 
       {/* Leadership Profile Modal */}
       {selectedLeader !== null && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.7)',
-          zIndex: 1000,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '20px'
-        }} onClick={() => setSelectedLeader(null)}>
-          <div style={{
-            background: 'var(--white)',
-            borderRadius: '16px',
-            maxWidth: '700px',
-            width: '100%',
-            maxHeight: '80vh',
-            overflow: 'auto',
-            position: 'relative',
-            padding: '40px'
-          }} onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={() => setSelectedLeader(null)}
-              style={{
-                position: 'absolute',
-                top: '16px',
-                right: '16px',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                color: 'var(--muted)'
-              }}
-            >
-              <X size={24} />
-            </button>
-            
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }} onClick={() => setSelectedLeader(null)}>
+          <div style={{ background: 'var(--white)', borderRadius: '16px', maxWidth: '700px', width: '100%', maxHeight: '80vh', overflow: 'auto', position: 'relative', padding: '40px' }} onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setSelectedLeader(null)} style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--muted)' }}><X size={24} /></button>
             <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
-              <div style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                flexShrink: 0,
-                background: '#e8e5de'
-              }}>
-                <Image 
-                  src={leadershipTeam[selectedLeader].image}
-                  alt={leadershipTeam[selectedLeader].name}
-                  width={100}
-                  height={100}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
-                />
+              <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, background: '#e8e5de' }}>
+                <Image src={teamData[selectedLeader].image} alt={teamData[selectedLeader].name} width={100} height={100} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
               </div>
               <div>
-                <h3 style={{ font: '400 24px Georgia, serif', color: 'var(--primary)', margin: '0' }}>
-                  {leadershipTeam[selectedLeader].name}
-                </h3>
-                <p style={{ fontSize: '15px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 10px' }}>
-                  {leadershipTeam[selectedLeader].position}
-                </p>
+                <h3 style={{ font: '400 24px Georgia, serif', color: 'var(--primary)', margin: '0' }}>{teamData[selectedLeader].name}</h3>
+                <p style={{ fontSize: '15px', color: 'var(--gold)', fontWeight: 600, margin: '4px 0 10px' }}>{teamData[selectedLeader].position}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
-                  {leadershipTeam[selectedLeader].expertise.map((exp, i) => (
-                    <span key={i} style={{ 
-                      fontSize: '11px', 
-                      background: 'rgba(212, 175, 55, 0.1)', 
-                      color: 'var(--gold)', 
-                      padding: '2px 12px', 
-                      borderRadius: '12px',
-                      fontWeight: 600
-                    }}>
-                      {exp}
-                    </span>
+                  {teamData[selectedLeader].expertise && teamData[selectedLeader].expertise.map((exp: string, i: number) => (
+                    <span key={i} style={{ fontSize: '11px', background: 'rgba(212, 175, 55, 0.1)', color: 'var(--gold)', padding: '2px 12px', borderRadius: '12px', fontWeight: 600 }}>{exp}</span>
                   ))}
                 </div>
               </div>
             </div>
-            
             <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid var(--border)' }}>
               <h4 style={{ font: '600 15px Georgia, serif', color: 'var(--primary)', margin: '0 0 6px' }}>Professional Background</h4>
-              <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: '1.7' }}>
-                {leadershipTeam[selectedLeader].background}
-              </p>
+              <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: '1.7' }}>{teamData[selectedLeader].background}</p>
             </div>
-            
             <div style={{ marginTop: '14px', display: 'flex', gap: '12px' }}>
-              <a href={leadershipTeam[selectedLeader].website} style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '6px',
-                color: 'var(--primary)',
-                fontSize: '13px',
-                fontWeight: 500,
-                textDecoration: 'none'
-              }}>
-                <Globe size={18} /> Website
-              </a>
-              <a href={`mailto:${leadershipTeam[selectedLeader].email}`} style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '6px',
-                color: 'var(--primary)',
-                fontSize: '13px',
-                fontWeight: 500,
-                textDecoration: 'none'
-              }}>
-                <Mail size={18} /> Email
-              </a>
+              <a href={teamData[selectedLeader].website} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontSize: '13px', fontWeight: 500, textDecoration: 'none' }}><Globe size={18} /> Website</a>
+              <a href={`mailto:${teamData[selectedLeader].email}`} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontSize: '13px', fontWeight: 500, textDecoration: 'none' }}><Mail size={18} /> Email</a>
             </div>
           </div>
         </div>
