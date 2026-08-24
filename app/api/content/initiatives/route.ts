@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import { checkAuth } from '@/lib/auth'
-import { readData } from '@/lib/data'
+import { readData, writeData } from '@/lib/data'
 
+// ✅ NO AUTH - Public can read
 export async function GET() {
   try {
     const data = readData('initiatives.json')
@@ -11,13 +12,13 @@ export async function GET() {
   }
 }
 
+// ✅ AUTH REQUIRED - Only admin can update
 export async function POST(request: Request) {
   if (!(await checkAuth())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
   try {
     const data = await request.json()
-    const { writeData } = await import('@/lib/data')
     writeData('initiatives.json', data)
     return NextResponse.json({ success: true })
   } catch (error) {
