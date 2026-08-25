@@ -1,11 +1,10 @@
- 
 'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { 
-  ArrowLeft, 
+  ArrowRight, 
   Plus, 
   Edit, 
   Trash2, 
@@ -166,10 +165,11 @@ export default function AdminTrainings() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream)', padding: '24px 0' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+        {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <Link href="/admin" style={{ color: 'var(--muted)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <ArrowLeft size={16} /> Back
+              <ArrowRight size={16} /> Back
             </Link>
             <h1 style={{ font: '400 28px Georgia, serif', color: 'var(--primary)', margin: 0 }}>Manage Trainings</h1>
           </div>
@@ -190,6 +190,7 @@ export default function AdminTrainings() {
           </button>
         </div>
 
+        {/* Form */}
         {showForm && (
           <div style={{
             background: 'var(--white)',
@@ -304,6 +305,7 @@ export default function AdminTrainings() {
           </div>
         )}
 
+        {/* Trainings List */}
         <div style={{
           background: 'var(--white)',
           borderRadius: '12px',
@@ -344,7 +346,25 @@ export default function AdminTrainings() {
                       }}>{item.status || 'open'}</span>
                     </td>
                     <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+                        {/* ✅ FORM BUTTON - Added here */}
+                        <Link 
+                          href={`/admin/trainings/${item.id}/form`}
+                          style={{
+                            padding: '6px 12px',
+                            background: 'rgba(212, 175, 55, 0.1)',
+                            color: 'var(--gold)',
+                            border: '1px solid rgba(212, 175, 55, 0.3)',
+                            borderRadius: '6px',
+                            fontSize: '12px',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                        >
+                          📝 Form
+                        </Link>
                         <button onClick={() => handleEdit(item)} style={{
                           padding: '6px 12px',
                           background: 'transparent',
