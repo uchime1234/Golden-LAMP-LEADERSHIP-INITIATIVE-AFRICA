@@ -1,23 +1,35 @@
 import { NextResponse } from 'next/server'
 import { checkAuth } from '@/lib/auth'
-import { addItem, getItems } from '@/lib/data'
+import { getItems, addItem } from '@/lib/superbase'
+import { getCached, setCached, invalidateCache } from '@/lib/cache'
 
-// ✅ NO AUTH - Public can read
 export async function GET() {
-  const team = getItems('team.json')
-  return NextResponse.json(team)
+  try {
+    const cached = getCached('team')
+    if (cached) {
+      return NextResponse.json(cached)
+    }
+    
+    const team = await getItems('team')
+    setCached('team', team)
+    return NextResponse.json(team)
+  } catch (error) {
+    console.error('Error fetching team:', error)
+    return NextResponse.json({ error: 'Failed to fetch team' }, { status: 500 })
+  }
 }
 
-// ✅ AUTH REQUIRED - Only admin can create
 export async function POST(request: Request) {
   if (!(await checkAuth())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
   try {
     const data = await request.json()
-    const newMember = addItem('team.json', data)
+    const newMember = await addItem('team', data)
+    invalidateCache('team')
     return NextResponse.json(newMember)
   } catch (error) {
+    console.error('Error adding team member:', error)
     return NextResponse.json({ error: 'Failed to add team member' }, { status: 500 })
   }
 }

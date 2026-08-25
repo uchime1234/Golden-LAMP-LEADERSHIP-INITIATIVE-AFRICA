@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { checkAuth } from '@/lib/auth'
-import { readData, writeData } from '@/lib/data'
+import { getTableData, saveTableData } from '@/lib/superbase'
 
 export async function GET() {
   if (!(await checkAuth())) {
@@ -12,7 +12,7 @@ export async function GET() {
     const allTrash = []
     
     for (const section of sections) {
-      const items = readData(`${section}.json`)
+      const items = await getTableData(section)
       const trashed = items
         .filter((item: any) => item.deleted === true)
         .map((item: any) => ({ ...item, type: section }))
@@ -21,6 +21,7 @@ export async function GET() {
     
     return NextResponse.json(allTrash)
   } catch (error) {
+    console.error('Error fetching trash:', error)
     return NextResponse.json({ error: 'Failed to fetch trash' }, { status: 500 })
   }
 }
@@ -34,13 +35,14 @@ export async function DELETE() {
     const sections = ['events', 'trainings', 'team', 'mentors', 'testimonials']
     
     for (const section of sections) {
-      const items = readData(`${section}.json`)
+      const items = await getTableData(section)
       const filtered = items.filter((item: any) => !item.deleted)
-      writeData(`${section}.json`, filtered)
+      await saveTableData(section, filtered)
     }
     
     return NextResponse.json({ success: true })
   } catch (error) {
+    console.error('Error emptying trash:', error)
     return NextResponse.json({ error: 'Failed to empty trash' }, { status: 500 })
   }
 }

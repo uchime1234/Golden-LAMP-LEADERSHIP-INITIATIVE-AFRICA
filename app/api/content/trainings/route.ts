@@ -1,23 +1,41 @@
 import { NextResponse } from 'next/server'
 import { checkAuth } from '@/lib/auth'
-import { addItem, getItems } from '@/lib/data'
+import { getItems, addItem } from '@/lib/superbase'
+import { getCached, setCached, invalidateCache } from '@/lib/cache'
 
-// ✅ NO AUTH - Public can read
 export async function GET() {
-  const trainings = getItems('trainings.json')
-  return NextResponse.json(trainings)
+  try {
+    // Try cache first
+    const cached = getCached('trainings')
+    if (cached) {
+      return NextResponse.json(cached)
+    }
+    
+    // If not cached, fetch from Supabase
+    const trainings = await getItems('trainings')
+    setCached('trainings', trainings)
+    
+    return NextResponse.json(trainings)
+  } catch (error) {
+    console.error('Error fetching trainings:', error)
+    return NextResponse.json({ error: 'Failed to fetch trainings' }, { status: 500 })
+  }
 }
 
-// ✅ AUTH REQUIRED - Only admin can create
 export async function POST(request: Request) {
   if (!(await checkAuth())) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
   try {
     const data = await request.json()
-    const newTraining = addItem('trainings.json', data)
+    const newTraining = await addItem('trainings', data)
+    
+    // Clear cache so new training appears
+    invalidateCache('trainings')
+    
     return NextResponse.json(newTraining)
   } catch (error) {
+    console.error('Error adding training:', error)
     return NextResponse.json({ error: 'Failed to add training' }, { status: 500 })
   }
 }
